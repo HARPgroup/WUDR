@@ -1,7 +1,7 @@
 WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR_local"
 setwd(WUDR_github)
 
-pacman::p_load(dplyr, rgdal, tmap, sqldf,ggpubr)
+pacman::p_load(dplyr, rgdal, tmap, sqldf,ggpubr,expss )
 options(scipen=999)
 
 ##Load Summary to get the data in both datasets
@@ -85,7 +85,7 @@ p<-ggscatter(dat, x="Facility_withdrawal_mg", y="Irrigated_Acreage",
           ylab = "Irrigated Acreage (USDA)")
 p
 
-ggsave(paste0(WUDR_github,"/plots/Acreage_withdarawal.png"),p, width = 5, height = 5, units="in")
+# ggsave(paste0(WUDR_github,"/plots/Acreage_withdarawal.png"),p, width = 5, height = 5, units="in")
 
 p2<-ggscatter(dat, x="Count", y="Irrigated_Operations", 
              add = "reg.line", conf.int = TRUE, 
@@ -94,30 +94,79 @@ p2<-ggscatter(dat, x="Count", y="Irrigated_Operations",
              ylab = "Irrigated Operations (USDA)")
 p2
 
-ggsave(paste0(WUDR_github,"/plots/Facilties_operations.png"),p2, width = 5, height = 5, units="in")
+# ggsave(paste0(WUDR_github,"/plots/Facilties_operations.png"),p2, width = 5, height = 5, units="in")
 
 
 ##Rank
-core_deq$F_withdarwal_rank<-rank(desc(core_deq$Facility_withdrawal_mg),ties.method= "first")
-core_census$Irri_acreage_rank<-rank(desc(core_census$Irrigated_Acreage))
-core_deq$count_f_rank<-rank(desc(core_deq$Count),ties.method= "first")
-core_census$operations_rank<-rank(desc(core_census$Irrigated_Operations),ties.method= "first")
+core_deq$Rank_DEQ_F_Withdrawls<-rank(desc(core_deq$Facility_withdrawal_mg),ties.method= "first")
+core_census$Rank_census_Irr_Acreage<-rank(desc(core_census$Irrigated_Acreage))
+core_deq$Rank_Deq_fac<-rank(desc(core_deq$Count),ties.method= "first")
+core_census$Rank_census_Operations<-rank(desc(core_census$Irrigated_Operations),ties.method= "first")
 
 
-rank_dat<-merge.data.frame(core_deq[,c(2,3,7,8)],core_census[,c(2,6,7)], by="GEOID")
+rank_dat<-merge.data.frame(core_deq[,c(2,3,6,7)],core_census[,c(2,6,7)], by="GEOID")
 
 
 
 #minimum edit distance
-#remove absolute
-#hist
-rank_dat$Diff_acreage_withdrawal<-rank_dat$F_withdarwal_rank-rank_dat$Irri_acreage_rank
-rank_dat$Diff_oper_count<-abs(rank_dat$count_f_rank-rank_dat$operations_rank)
 
+rank_dat$Acreage_withdarwal_difference<-rank_dat$Rank_DEQ_F_Withdrawls-rank_dat$Rank_census_Irr_Acreage
+rank_dat$Facilities_Operations_difference<-rank_dat$Rank_Deq_fac-rank_dat$Rank_census_Operations
+
+p3<-ggplot(data = rank_dat, aes(x=Acreage_withdarwal_difference))+
+  geom_histogram()+
+  labs(subtitle = "Difference in county ranks for Irrigated acreage in Cenus data and DEQ reported withdrawals", 
+       x= "Difference in rank", y="Count", caption = "(-ve sign of rank indicates higher acreage area rank for a county in census data)")+
+theme_light()
+ 
+
+p3
+# ggsave(paste0(WUDR_github,"/plots/Rank_diff_acreage_withdarwals.png"),p3, width = 8, height = 5, units="in")
+
+p4<-ggplot(data = rank_dat, aes(x=Facilities_Operations_difference))+
+  geom_histogram()+
+  labs(subtitle = "Difference in county ranks for Operations in Cenus data and Faciltiites in DEQ data", 
+       x= "Difference in rank", y="Count", caption = "(-ve sign of rank indicates higher operations rank for a county in census data)")+
+  theme_light()
+
+
+p4
+# ggsave(paste0(WUDR_github,"/plots/Rank_diff_opeartions_fac.png"),p4, width = 8, height = 5, units="in")
+
+p5<-ggplot(data = rank_dat, aes(x=Acreage_withdarwal_difference))+
+  geom_histogram(aes(y=..density..), colour="black", fill="white")+
+  geom_density(alpha=.2, fill="#FF6666")+
+  labs(subtitle = "Density plot of difference in ranks for Irrigated acreage in Cenus data and DEQ reported withdrawals", 
+       x= "Difference in rank", y="Density", caption = "(-ve sign of rank indicates higher acreage area rank for a county in census data)")+
+  theme_light()
+p5 
+# ggsave(paste0(WUDR_github,"/plots/density_acreage_with.png"),p5, width = 8, height = 5, units="in")
+
+p6<-ggplot(data = rank_dat, aes(x=Facilities_Operations_difference))+
+  geom_histogram(aes(y=..density..), colour="black", fill="white")+
+  geom_density(alpha=.2, fill="#FF6666")+
+  labs(subtitle = "Density plot of difference in ranks for for Operations in Cenus data and Faciltiites in DEQ data", 
+       x= "Difference in ranks", y="Density", caption = "(-ve sign of rank indicates higher operations rank for a county in census data)")+
+  theme_light()
+p6 
+
+# ggsave(paste0(WUDR_github,"/plots/density_opeartions_fac.png"),p6, width = 8, height = 5, units="in")
 
 ##Percentage
 total_withdrawal_deq<-sum(core_deq$Facility_withdrawal_mg)
 core_deq$percet_withdrawal<-round(100*core_deq$Facility_withdrawal_mg/total_withdrawal_deq,0)
+core_deq<-core_deq %>% arrange(desc(percet_withdrawal))
+
 
 total_withdrawal_census<-sum(core_census$Irrigated_Acreage)
 core_census$percet_acreage<-round(100*core_census$Irrigated_Acreage/total_withdrawal_census,0)
+core_census<-core_census %>% arrange(desc(percet_acreage))
+
+#Percent atleast 80
+p80_deq_with<-subset(core_deq, c(TRUE, cumsum(percet_withdrawal) <= 80)[-nrow(core_deq)])
+sum(p80_deq_with$percet_withdrawal)
+
+p80_census_acreage<-subset(core_census, c(TRUE, cumsum(percet_acreage) <= 80)[-nrow(core_census)])
+sum(p80_census_acreage$percet_acreage)
+
+
