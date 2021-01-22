@@ -169,4 +169,27 @@ sum(p80_deq_with$percet_withdrawal)
 p80_census_acreage<-subset(core_census, c(TRUE, cumsum(percet_acreage) <= 80)[-nrow(core_census)])
 sum(p80_census_acreage$percet_acreage)
 
+##
+p80_deq_with$status<-p80_deq_with$GEOID %in% p80_census_acreage$GEOID
+# OR df2[df2$genecolumn %in% df1$gene_list_column_name,]
+p80_deq_with$status[p80_deq_with$status==FALSE] <- c("High in DEQ data not in USDA")
+p80_deq_with$status[p80_deq_with$status==TRUE] <- c("High in both datasets")
+# write.csv(p80_deq_with, paste0(WUDR_github,"/csv_files/DEQ 80 percent withdarwals.csv"))
+##
+p80_census_acreage$status<-p80_census_acreage$GEOID %in% p80_deq_with$GEOID
+p80_census_acreage$status[p80_census_acreage$status==FALSE] <- c("High in USDA data not in DEQ")
+p80_census_acreage$status[p80_census_acreage$status==TRUE] <- c("High in both datasets")
+# write.csv(p80_census_acreage, paste0(WUDR_github,"/csv_files/USDA 80 percent acreage.csv"))
+
+bothdatasets<-dplyr::filter(p80_census_acreage, status=="High in both datasets")
+bothdatasets<-merge.data.frame(bothdatasets,p80_deq_with[,c("GEOID","Count","Facility_withdrawal_mg",
+                                                            "Rank_DEQ_F_Withdrawls",  "Rank_Deq_fac", "percet_withdrawal")], by= "GEOID")
+
+# write.csv(bothdatasets, paste0(WUDR_github,"/csv_files/Common 80 percent acreage and withdrawal.csv"))
+
+DEQ_not_in_USDA<-subset(p80_deq_with, !(GEOID %in% bothdatasets$GEOID))
+# write.csv(DEQ_not_in_USDA, paste0(WUDR_github,"/csv_files/80 perc withdarwal DEQ_not_in_USDA.csv"))
+USDA_not_in_DEQ<-subset(p80_census_acreage, !(GEOID %in% bothdatasets$GEOID))
+# write.csv(USDA_not_in_DEQ, paste0(WUDR_github,"/csv_files/80 perc withdarwal USDA_not_in_DEQ.csv"))
+
 
