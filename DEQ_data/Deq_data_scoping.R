@@ -1,8 +1,9 @@
-setwd("F:/My Drive/WUDR/DEQ_Data_Retrevial")
+WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR_local"
+setwd(WUDR_github)
 
 pacman::p_load(dplyr, rgdal, tmap)
 year=2017
-deq_dat<-read.csv("2017withdrawal_monthly.csv")
+deq_dat<-read.csv(paste0(WUDR_github,"/csv_files/2017withdrawal_DEQ.csv"))
 levels(deq_dat$Use.Type)
 
 #Get the withdrawal dat for use type of irrigation only
@@ -37,7 +38,7 @@ VA_counties<-readOGR("F:/My Drive/VA_shapefile_updated", layer="VA_counties_new"
 plotdat<-sp::merge(VA_counties,summary_counties, 
                    by.x = "GEOID", by.y = "FIPS.Code", all.x=TRUE)
 
-summary<-plotdat@data[,c(1,3,6,19,20,21)]
+summary<-plotdat@data[,c(1,3,6,10,12,13,14)]
 # write.csv(summary, paste0("deqdat_summary", year,".csv"))
 
 
@@ -57,7 +58,7 @@ p1<-tm_shape(plotdat)+
   tm_credits("Source: DEQ", size=0.7, position = c("right","top"))
 p1
 
-tmap_save(p1, paste0(year,"DEQ_irrigated_facilites.png"),  width = 10, height = 6.5, units = 'in')
+# tmap_save(p1, paste0(year,"DEQ_irrigated_facilites.png"),  width = 10, height = 6.5, units = 'in')
 
 p2<-tm_shape(plotdat)+
   tm_polygons("Facility_withdrawal_mg", title = "Facility withdrawals",
@@ -74,4 +75,4 @@ p2<-tm_shape(plotdat)+
   tm_credits("Source: DEQ", size=0.7, position = c("right","top"))
 p2
 
-tmap_save(p2, paste0(year,"DEQ_withdrawals.png"),  width = 10, height = 6.5, units = 'in')
+# tmap_save(p2, paste0(year,"DEQ_withdrawals.png"),  width = 10, height = 6.5, units = 'in')

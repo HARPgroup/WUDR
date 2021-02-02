@@ -77,24 +77,25 @@ res #Strong
 # load("F:/My Drive/WUDR/DEQ_Data_Retrevial/corelation.RData")
 
 dat<-merge.data.frame(core_deq,core_census)
+write.csv(dat, paste0(WUDR_github,"/csv_files/Common_counties_dat.csv"))
 
 p<-ggscatter(dat, x="Facility_withdrawal_mg", y="Irrigated_Acreage", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
           xlab = "Facility Withdrawal million gallon (DEQ)",
-          ylab = "Irrigated Acreage (USDA)")
+          ylab = "Irrigated Acreage (USDA)")+ scale_y_log10() +scale_x_log10()
 p
 
-# ggsave(paste0(WUDR_github,"/plots/Acreage_withdarawal.png"),p, width = 5, height = 5, units="in")
+# ggsave(paste0(WUDR_github,"/plots/Acreage_withdarawal_log.png"),p, width = 5, height = 5, units="in")
 
 p2<-ggscatter(dat, x="Count", y="Irrigated_Operations", 
              add = "reg.line", conf.int = TRUE, 
              cor.coef = TRUE, cor.method = "pearson",
              xlab = "Agriculture facilities (DEQ)",
-             ylab = "Irrigated Operations (USDA)")
+             ylab = "Irrigated Operations (USDA)")+ scale_y_log10() +scale_x_log10()
 p2
 
-# ggsave(paste0(WUDR_github,"/plots/Facilties_operations.png"),p2, width = 5, height = 5, units="in")
+ # ggsave(paste0(WUDR_github,"/plots/Facilties_operations_log.png"),p2, width = 5, height = 5, units="in")
 
 
 ##Rank
@@ -112,6 +113,8 @@ rank_dat<-merge.data.frame(core_deq[,c(2,3,6,7)],core_census[,c(2,6,7)], by="GEO
 
 rank_dat$Acreage_withdarwal_difference<-rank_dat$Rank_DEQ_F_Withdrawls-rank_dat$Rank_census_Irr_Acreage
 rank_dat$Facilities_Operations_difference<-rank_dat$Rank_Deq_fac-rank_dat$Rank_census_Operations
+# write.csv(rank_dat, paste0(WUDR_github,"/csv_files/Rand and Difference in Ranks.csv"))
+
 
 p3<-ggplot(data = rank_dat, aes(x=Acreage_withdarwal_difference))+
   geom_histogram()+
