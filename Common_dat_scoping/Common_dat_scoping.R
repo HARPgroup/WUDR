@@ -77,7 +77,7 @@ res #Strong
 # load("F:/My Drive/WUDR/DEQ_Data_Retrevial/corelation.RData")
 
 dat<-merge.data.frame(core_deq,core_census)
-write.csv(dat, paste0(WUDR_github,"/csv_files/Common_counties_dat.csv"))
+# write.csv(dat, paste0(WUDR_github,"/csv_files/Common_counties_dat.csv"))
 
 p<-ggscatter(dat, x="Facility_withdrawal_mg", y="Irrigated_Acreage", 
           add = "reg.line", conf.int = TRUE, 

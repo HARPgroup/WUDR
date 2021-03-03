@@ -1,0 +1,6 @@
+,GEOID,Facility,F_HydroID,Facility_withdrawal_mg,COUNTYFP,NAMELSAD,Irrigated_Acreage,Irrigated_Operations,Rank_census_Irr_Acreage,Rank_census_Operations,percet_acreage,status
+1,51015,Laurel Hill Trout Farm- Middlebrook,73163,350.07,15,Augusta County,2549,64,6,2,6,High in USDA data not in DEQ
+2,51015,Laurel Hill Trout Farm - Goshen,73152,235.31,15,Augusta County,2549,64,6,2,6,High in USDA data not in DEQ
+3,51093,Perry Minnow Farm Incorporated,66944,27.7332,93,Isle of Wight County,933,18,16,20,2,High in USDA data not in DEQ
+4,51093,Smithfield Hog Production Farms 1 through 5,67263,27.1747,93,Isle of Wight County,933,18,16,20,2,High in USDA data not in DEQ
+5,51175,Smithfield Hog Production Farms 6-8,67233,17.8319,175,Southampton County,1624,15,7,26,4,High in USDA data not in DEQ

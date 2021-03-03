@@ -1,0 +1,4 @@
+Operation list is the list of operations data 
+
+Dat_d_filled is teh irrigtaed area dataset with D values filled and rescaled
+

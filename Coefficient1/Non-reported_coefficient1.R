@@ -1,0 +1,90 @@
+WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR_local"
+setwd(WUDR_github)
+
+load(paste0(WUDR_github,"/dat_load/dat_D_filled.RData"))
+load(paste0(WUDR_github,"/dat_load/opeartions_list.RData"))
+
+
+
+
+new_df2 <- lapply(opeartions_list, function(x){
+  x$'Size bin' <- rownames(x)
+  rownames(x) <- NULL
+  return(x)
+})
+
+total <- Map(merge, dat_D_filled,new_df2, by = 'Size bin')
+
+total <- lapply(total, function(x){
+  x<- x[c(2,3,10,12,4,6,7,8,9,11,5,1),]
+  return(x)
+})
+
+
+colnames <- c("Size.bin", "Area", "Operations")
+
+total <- lapply(total, setNames, colnames)
+
+total <- lapply(total, function(x){
+  x$Area.per.op <- round (x$Area / x$Operations, 2)
+  return(x)
+})
+
+Avg.Farm.size <- as.data.frame(as.numeric(c("5","29.5", "59.5","84.5","119.5","159.5", "199.5","239.5",
+                                            "379.5", "749.5","1499.5", "3500")))
+
+
+total <- mapply(FUN = `cbind`,  total,Avg.Farm.size, SIMPLIFY = FALSE)
+
+colnames <- c("Size.bin","Area", "Operations", "Area.per.op" ,"Avg.Farm.size")
+
+total <- lapply(total, setNames, colnames)
+
+total <- lapply(total, function(x){
+  x$Avg.Pect.Irr <- round (x$Area.per.op / x$Avg.Farm.size, 2)
+  return(x)
+})
+
+Non.irr.TH <- 10
+
+Under.Th<-list()
+Over.Th <- list()
+
+for (i in 1: length(total)){
+  Under.Th[[i]] <- total[[i]] %>%
+    subset(Area.per.op < Non.irr.TH) %>% 
+    summarise(sum(Area))
+}
+
+
+names(Under.Th) <- names(total)
+
+for (i in 1: length(total)){
+  Over.Th[[i]] <- total[[i]] %>%
+    subset(Area.per.op >= Non.irr.TH) %>% 
+    summarise(sum(Area))
+}
+
+names(Over.Th) <- names(total)
+
+TH_dat <- mapply(FUN = `cbind`,  Under.Th,Over.Th, SIMPLIFY = FALSE)
+
+colnames <- c("Irr.Area.Under.TH" , "Irr.Area.Over.TH")
+
+TH_dat <- lapply(TH_dat, setNames, colnames)
+
+TH_dat <- lapply(TH_dat, function(x){
+  x$Pct.Non.repoted <- round (100*x$Irr.Area.Under.TH / x$Irr.Area.Over.TH, 2)
+  return(x)
+})
+
+Unreported <-  lapply(TH_dat, function(x) x%>% select(Pct.Non.repoted, Irr.Area.Under.TH))
+
+
+df <- data.frame(matrix(unlist(Unreported), nrow=length(Unreported), byrow=TRUE))
+df$county <- names(Unreported)
+
+colnames(df) <- c("Pct.Non.repoted", "Irr.Area.Under.TH", "County") 
+df <- df[,c(3,2,1)]
+
+
