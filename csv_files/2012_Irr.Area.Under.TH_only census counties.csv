@@ -1,0 +1,34 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51051,"Dickenson County",51,"Available in USDA dataset","DICKENSON",12,0,12,Inf,100,12
+"2",51073,"Gloucester County",73,"Available in USDA dataset","GLOUCESTER",46,0,46,Inf,100,46
+"3",51185,"Tazewell County",185,"Available in USDA dataset","TAZEWELL",18,0,18,Inf,100,18
+"4",51199,"York County",199,"Available in USDA dataset","YORK",21,13,8,61.54,38.1,8.001
+"5",51017,"Bath County",17,"Available in USDA dataset","BATH",19,0,19,Inf,100,19
+"6",51023,"Botetourt County",23,"Available in USDA dataset","BOTETOURT",52,27,25,92.59,48.08,25.0016
+"7",51091,"Highland County",91,"Available in USDA dataset","HIGHLAND",20,11,9,81.82,45,9
+"8",51095,"James City County",95,"Available in USDA dataset","JAMES CITY",37,22,15,68.18,40.54,14.9998
+"9",51133,"Northumberland County",133,"Available in USDA dataset","NORTHUMBERLAND",38,36,2,5.56,5.26,1.9988
+"10",51159,"Richmond County",159,"Available in USDA dataset","RICHMOND",126,105,21,20,16.67,21.0042
+"11",51187,"Warren County",187,"Available in USDA dataset","WARREN",12,0,12,Inf,100,12
+"12",51005,"Alleghany County",5,"Available in USDA dataset","ALLEGHANY",8,0,8,Inf,100,8
+"13",51029,"Buckingham County",29,"Available in USDA dataset","BUCKINGHAM",16,0,16,Inf,100,16
+"14",51089,"Henry County",89,"Available in USDA dataset","HENRY",137,97,40,41.24,29.2,40.004
+"15",51105,"Lee County",105,"Available in USDA dataset","LEE",61,0,61,Inf,100,61
+"16",51195,"Wise County",195,"Available in USDA dataset","WISE",12,0,12,Inf,100,12
+"17",51113,"Madison County",113,"Available in USDA dataset","MADISON",70,40,30,75,42.86,30.002
+"18",51157,"Rappahannock County",157,"Available in USDA dataset","RAPPAHANNOCK",121,26,95,365.38,78.51,94.9971
+"19",51003,"Albemarle County",3,"Available in USDA dataset","ALBEMARLE",1456,1288,168,13.04,11.54,168.0224
+"20",51155,"Pulaski County",155,"Available in USDA dataset","PULASKI",14,0,14,Inf,100,14
+"21",51191,"Washington County",191,"Available in USDA dataset","WASHINGTON",224,135,89,65.93,39.73,88.9952
+"22",51079,"Greene County",79,"Available in USDA dataset","GREENE",49,11,38,345.45,77.55,37.9995
+"23",51011,"Appomattox County",11,"Available in USDA dataset","APPOMATTOX",105,24,81,337.5,77.14,80.997
+"24",51135,"Nottoway County",135,"Available in USDA dataset","NOTTOWAY",75,20,55,275,73.33,54.9975
+"25",51049,"Cumberland County",49,"Available in USDA dataset","CUMBERLAND",18,0,18,Inf,100,18
+"26",51197,"Wythe County",197,"Available in USDA dataset","WYTHE",72,20,52,260,72.22,51.9984
+"27",51115,"Mathews County",115,"Available in USDA dataset","MATHEWS",17,0,17,Inf,100,17
+"28",51169,"Scott County",169,"Available in USDA dataset","SCOTT",56,33,23,69.7,41.07,22.9992
+"29",51065,"Fluvanna County",65,"Available in USDA dataset","FLUVANNA",144,83,61,73.49,42.36,60.9984
+"30",51071,"Giles County",71,"Available in USDA dataset","GILES",32,0,32,Inf,100,32
+"31",51077,"Grayson County",77,"Available in USDA dataset","GRAYSON",45,0,45,Inf,100,45
+"32",51061,"Fauquier County",61,"Available in USDA dataset","FAUQUIER",394,187,207,110.7,52.54,207.0076
+"33",51109,"Louisa County",109,"Available in USDA dataset","LOUISA",278,190,88,46.32,31.65,87.987

@@ -1,0 +1,134 @@
+"","GEOID","Countycode","NAME","NAMELSAD","F_HydroID","Count","Facility_withdrawal_mg"
+"8","51015","15","Augusta","Augusta County",73047,34,461.554
+"20","51037","37","Charlotte","Charlotte County",72227,3,0
+"26","51051","51","Dickenson","Dickenson County",NA,NA,NA
+"27","51053","53","Dinwiddie","Dinwiddie County",72159,41,14.055
+"34","51069","69","Frederick","Frederick County",72797,3,9
+"36","51073","73","Gloucester","Gloucester County",NA,NA,NA
+"42","51085","85","Hanover","Hanover County",74107,8,236.0457
+"49","51099","99","King George","King George County",NA,NA,NA
+"61","51125","125","Nelson","Nelson County",72637,6,192.13
+"63","51131","131","Northampton","Northampton County",71804,30,742.087
+"66","51137","137","Orange","Orange County",74373,2,0.45
+"70","51145","145","Powhatan","Powhatan County",74249,6,0.58
+"72","51149","149","Prince George","Prince George County",73165,1,0
+"77","51161","161","Roanoke","Roanoke County",72039,4,20.7
+"85","51177","177","Spotsylvania","Spotsylvania County",71952,1,60.56
+"89","51185","185","Tazewell","Tazewell County",NA,NA,NA
+"95","51199","199","York","York County",NA,NA,NA
+"4","51007","7","Amelia","Amelia County",72150,6,42.093
+"9","51017","17","Bath","Bath County",NA,NA,NA
+"10","51019","19","Bedford","Bedford County",NA,NA,NA
+"12","51023","23","Botetourt","Botetourt County",NA,NA,NA
+"17","51033","33","Caroline","Caroline County",74063,11,960.526
+"19","51036","36","Charles City","Charles City County",71936,4,268.67
+"21","51041","41","Chesterfield","Chesterfield County",71997,6,55
+"28","51057","57","Essex","Essex County",72235,6,140.34
+"33","51067","67","Franklin","Franklin County",74223,8,11.81
+"41","51083","83","Halifax","Halifax County",72082,14,26.816
+"45","51091","91","Highland","Highland County",NA,NA,NA
+"47","51095","95","James City","James City County",NA,NA,NA
+"53","51107","107","Loudoun","Loudoun County",72870,3,36.6
+"55","51111","111","Lunenburg","Lunenburg County",72088,7,10
+"62","51127","127","New Kent","New Kent County",72289,2,11.89
+"64","51133","133","Northumberland","Northumberland County",NA,NA,NA
+"69","51143","143","Pittsylvania","Pittsylvania County",72751,99,86.068
+"76","51159","159","Richmond","Richmond County",72959,1,0
+"79","51165","165","Rockingham","Rockingham County",72993,32,276.896
+"84","51175","175","Southampton","Southampton County",72048,3,41
+"86","51179","179","Stafford","Stafford County",NA,NA,NA
+"90","51187","187","Warren","Warren County",NA,NA,NA
+"31","51063","63","Floyd","Floyd County",NA,NA,NA
+"43","51087","87","Henrico","Henrico County",NA,NA,NA
+"3","51005","5","Alleghany","Alleghany County",72283,1,0
+"15","51029","29","Buckingham","Buckingham County",NA,NA,NA
+"44","51089","89","Henry","Henry County",NA,NA,NA
+"68","51141","141","Patrick","Patrick County",NA,NA,NA
+"92","51193","193","Westmoreland","Westmoreland County",72918,5,311.381
+"40","51081","81","Greensville","Greensville County",72693,3,50.8297
+"52","51105","105","Lee","Lee County",NA,NA,NA
+"93","51195","195","Wise","Wise County",NA,NA,NA
+"56","51113","113","Madison","Madison County",72064,2,0
+"51","51103","103","Lancaster","Lancaster County",NA,NA,NA
+"75","51157","157","Rappahannock","Rappahannock County",NA,NA,NA
+"2","51003","3","Albemarle","Albemarle County",NA,NA,NA
+"16","51031","31","Campbell","Campbell County",73901,4,0
+"29","51059","59","Fairfax","Fairfax County",71937,3,14.599
+"60","51121","121","Montgomery","Montgomery County",73679,3,17
+"74","51155","155","Pulaski","Pulaski County",NA,NA,NA
+"46","51093","93","Isle of Wight","Isle of Wight County",72299,11,97.5
+"82","51171","171","Shenandoah","Shenandoah County",72003,13,30.277
+"14","51027","27","Buchanan","Buchanan County",NA,NA,NA
+"50","51101","101","King William","King William County",73946,7,143.51
+"71","51147","147","Prince Edward","Prince Edward County",71649,1,38.6
+"91","51191","191","Washington","Washington County",NA,NA,NA
+"120","51720","720","Norton","Norton city",NA,NA,NA
+"123","51740","740","Portsmouth","Portsmouth city",NA,NA,NA
+"130","51810","810","Virginia Beach","Virginia Beach city",71922,2,0
+"73","51153","153","Prince William","Prince William County",72987,2,3.4
+"37","51075","75","Goochland","Goochland County",71903,1,0
+"87","51181","181","Surry","Surry County",72669,2,53.203
+"39","51079","79","Greene","Greene County",72943,1,0
+"6","51011","11","Appomattox","Appomattox County",NA,NA,NA
+"13","51025","25","Brunswick","Brunswick County",72098,4,0
+"22","51043","43","Clarke","Clarke County",73682,3,42.8
+"65","51135","135","Nottoway","Nottoway County",72174,1,0
+"108","51630","630","Fredericksburg","Fredericksburg city",NA,NA,NA
+"25","51049","49","Cumberland","Cumberland County",NA,NA,NA
+"116","51685","685","Manassas Park","Manassas Park city",NA,NA,NA
+"99","51540","540","Charlottesville","Charlottesville city",NA,NA,NA
+"101","51570","570","Colonial Heights","Colonial Heights city",NA,NA,NA
+"106","51610","610","Falls Church","Falls Church city",NA,NA,NA
+"128","51790","790","Staunton","Staunton city",NA,NA,NA
+"132","51830","830","Williamsburg","Williamsburg city",NA,NA,NA
+"83","51173","173","Smyth","Smyth County",71674,1,0
+"96","51510","510","Alexandria","Alexandria city",NA,NA,NA
+"7","51013","13","Arlington","Arlington County",NA,NA,NA
+"23","51045","45","Craig","Craig County",NA,NA,NA
+"102","51580","580","Covington","Covington city",NA,NA,NA
+"105","51600","600","Fairfax","Fairfax city",NA,NA,NA
+"94","51197","197","Wythe","Wythe County",NA,NA,NA
+"57","51115","115","Mathews","Mathews County",72902,2,0
+"81","51169","169","Scott","Scott County",NA,NA,NA
+"110","51650","650","Hampton","Hampton city",NA,NA,NA
+"114","51680","680","Lynchburg","Lynchburg city",NA,NA,NA
+"115","51683","683","Manassas","Manassas city",NA,NA,NA
+"100","51550","550","Chesapeake","Chesapeake city",67165,1,0
+"32","51065","65","Fluvanna","Fluvanna County",NA,NA,NA
+"97","51520","520","Bristol","Bristol city",NA,NA,NA
+"124","51750","750","Radford","Radford city",NA,NA,NA
+"125","51760","760","Richmond","Richmond city",NA,NA,NA
+"11","51021","21","Bland","Bland County",NA,NA,NA
+"133","51840","840","Winchester","Winchester city",NA,NA,NA
+"88","51183","183","Sussex","Sussex County",73221,3,38.6
+"103","51590","590","Danville","Danville city",NA,NA,NA
+"131","51820","820","Waynesboro","Waynesboro city",NA,NA,NA
+"129","51800","800","Suffolk","Suffolk city",66897,6,208.64
+"18","51035","35","Carroll","Carroll County",73943,3,0
+"112","51670","670","Hopewell","Hopewell city",NA,NA,NA
+"98","51530","530","Buena Vista","Buena Vista city",NA,NA,NA
+"35","51071","71","Giles","Giles County",NA,NA,NA
+"126","51770","770","Roanoke","Roanoke city",NA,NA,NA
+"127","51775","775","Salem","Salem city",NA,NA,NA
+"107","51620","620","Franklin","Franklin city",NA,NA,NA
+"119","51710","710","Norfolk","Norfolk city",NA,NA,NA
+"122","51735","735","Poquoson","Poquoson city",NA,NA,NA
+"111","51660","660","Harrisonburg","Harrisonburg city",NA,NA,NA
+"109","51640","640","Galax","Galax city",NA,NA,NA
+"118","51700","700","Newport News","Newport News city",NA,NA,NA
+"38","51077","77","Grayson","Grayson County",NA,NA,NA
+"5","51009","9","Amherst","Amherst County",NA,NA,NA
+"24","51047","47","Culpeper","Culpeper County",74457,4,4.11
+"59","51119","119","Middlesex","Middlesex County",72216,4,13.4
+"67","51139","139","Page","Page County",72228,7,34.476
+"121","51730","730","Petersburg","Petersburg city",NA,NA,NA
+"48","51097","97","King and Queen","King and Queen County",90580,4,256.91
+"117","51690","690","Martinsville","Martinsville city",NA,NA,NA
+"80","51167","167","Russell","Russell County",73633,1,0
+"104","51595","595","Emporia","Emporia city",NA,NA,NA
+"113","51678","678","Lexington","Lexington city",NA,NA,NA
+"30","51061","61","Fauquier","Fauquier County",NA,NA,NA
+"58","51117","117","Mecklenburg","Mecklenburg County",74041,7,5.59
+"1","51001","1","Accomack","Accomack County",73281,39,3480.674
+"54","51109","109","Louisa","Louisa County",NA,NA,NA
+"78","51163","163","Rockbridge","Rockbridge County",72186,1,0

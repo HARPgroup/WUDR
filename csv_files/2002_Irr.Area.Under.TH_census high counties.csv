@@ -1,0 +1,16 @@
+"","Countycode","GEOID","NAMELSAD","status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",143,51143,"Pittsylvania County","High in USDA data not in DEQ","PITTSYLVANIA",5606,5395,211,3.91,3.76,210.7856
+"2",117,51117,"Mecklenburg County","High in USDA data not in DEQ","MECKLENBURG",4158,3922,236,6.02,5.68,236.1744
+"3",107,51107,"Loudoun County","High in USDA data not in DEQ","LOUDOUN",3666,3481,185,5.31,5.05,185.133
+"4",83,51083,"Halifax County","High in USDA data not in DEQ","HALIFAX",2617,2535,82,3.23,3.13,81.9121
+"5",101,51101,"King William County","High in USDA data not in DEQ","KING WILLIAM",2457,2442,15,0.61,0.61,14.9877
+"6",175,51175,"Southampton County","High in USDA data not in DEQ","SOUTHAMPTON",2385,2385,0,0,0,0
+"7",25,51025,"Brunswick County","High in USDA data not in DEQ","BRUNSWICK",1474,1348,126,9.35,8.55,126.027
+"8",31,51031,"Campbell County","High in USDA data not in DEQ","CAMPBELL",1328,1198,130,10.85,9.79,130.0112
+"9",37,51037,"Charlotte County","High in USDA data not in DEQ","CHARLOTTE",1454,1252,202,16.13,13.89,201.9606
+"10",111,51111,"Lunenburg County","High in USDA data not in DEQ","LUNENBURG",1484,1423,61,4.29,4.11,60.9924
+"11",137,51137,"Orange County","High in USDA data not in DEQ","ORANGE",1556,1503,53,3.53,3.41,53.0596
+"12",181,51181,"Surry County","High in USDA data not in DEQ","SURRY",1472,1442,30,2.08,2.04,30.0288
+"13",183,51183,"Sussex County","High in USDA data not in DEQ","SUSSEX",1410,1394,16,1.15,1.13,15.933
+"14",7,51007,"Amelia County","High in USDA data not in DEQ","AMELIA",886,777,109,14.03,12.3,108.978
+"15",35,51035,"Carroll County","High in USDA data not in DEQ","CARROLL",785,725,60,8.28,7.64,59.974

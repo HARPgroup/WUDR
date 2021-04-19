@@ -1,0 +1,33 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51073,"Gloucester County",73,"Available in USDA dataset","GLOUCESTER",98,47,51,108.51,52.04,50.9992
+"2",51185,"Tazewell County",185,"Available in USDA dataset","TAZEWELL",245,216,29,13.43,11.84,29.008
+"3",51199,"York County",199,"Available in USDA dataset","YORK",41,0,41,Inf,100,41
+"4",51017,"Bath County",17,"Available in USDA dataset","BATH",109,109,0,0,0,0
+"5",51019,"Bedford County",19,"Available in USDA dataset","BEDFORD",676,517,159,30.75,23.52,158.9952
+"6",51023,"Botetourt County",23,"Available in USDA dataset","BOTETOURT",253,176,77,43.75,30.43,76.9879
+"7",51095,"James City County",95,"Available in USDA dataset","JAMES CITY",102,90,12,13.33,11.76,11.9952
+"8",51133,"Northumberland County",133,"Available in USDA dataset","NORTHUMBERLAND",38,28,10,35.71,26.32,10.0016
+"9",51179,"Stafford County",179,"Available in USDA dataset","STAFFORD",186,164,22,13.41,11.83,22.0038
+"10",51187,"Warren County",187,"Available in USDA dataset","WARREN",151,81,70,86.42,46.36,70.0036
+"11",51063,"Floyd County",63,"Available in USDA dataset","FLOYD",779,583,196,33.62,25.16,195.9964
+"12",51029,"Buckingham County",29,"Available in USDA dataset","BUCKINGHAM",469,453,16,3.53,3.41,15.9929
+"13",51089,"Henry County",89,"Available in USDA dataset","HENRY",416,377,39,10.34,9.38,39.0208
+"14",51141,"Patrick County",141,"Available in USDA dataset","PATRICK",325,191,134,70.16,41.23,133.9975
+"15",51105,"Lee County",105,"Available in USDA dataset","LEE",1374,1170,204,17.44,14.85,204.039
+"16",51195,"Wise County",195,"Available in USDA dataset","WISE",28,18,10,55.56,35.71,9.9988
+"17",51157,"Rappahannock County",157,"Available in USDA dataset","RAPPAHANNOCK",335,325,10,3.08,2.99,10.0165
+"18",51003,"Albemarle County",3,"Available in USDA dataset","ALBEMARLE",1387,1267,120,9.47,8.65,119.9755
+"19",51155,"Pulaski County",155,"Available in USDA dataset","PULASKI",320,317,3,0.95,0.94,3.008
+"20",51191,"Washington County",191,"Available in USDA dataset","WASHINGTON",836,681,155,22.76,18.54,154.9944
+"21",51011,"Appomattox County",11,"Available in USDA dataset","APPOMATTOX",508,489,19,3.89,3.74,18.9992
+"22",51049,"Cumberland County",49,"Available in USDA dataset","CUMBERLAND",222,195,27,13.85,12.16,26.9952
+"23",51045,"Craig County",45,"Available in USDA dataset","CRAIG",130,100,30,30,23.08,30.004
+"24",51197,"Wythe County",197,"Available in USDA dataset","WYTHE",1061,1039,22,2.12,2.07,21.9627
+"25",51169,"Scott County",169,"Available in USDA dataset","SCOTT",637,457,180,39.39,28.26,180.0162
+"26",51065,"Fluvanna County",65,"Available in USDA dataset","FLUVANNA",57,33,24,72.73,42.11,24.0027
+"27",51021,"Bland County",21,"Available in USDA dataset","BLAND",135,114,21,18.42,15.56,21.006
+"28",51071,"Giles County",71,"Available in USDA dataset","GILES",193,165,28,16.97,14.51,28.0043
+"29",51077,"Grayson County",77,"Available in USDA dataset","GRAYSON",619,542,77,14.21,12.44,77.0036
+"30",51009,"Amherst County",9,"Available in USDA dataset","AMHERST",144,108,36,33.33,25,36
+"31",51061,"Fauquier County",61,"Available in USDA dataset","FAUQUIER",862,660,202,30.61,23.43,201.9666
+"32",51109,"Louisa County",109,"Available in USDA dataset","LOUISA",365,314,51,16.24,13.97,50.9905

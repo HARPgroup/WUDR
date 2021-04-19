@@ -1,0 +1,8 @@
+"","GEOID","Countycode","NAMELSAD","Irrigated_Acreage","Irrigated_Operations","Rank_census_Irr_Acreage","Rank_census_Operations","percet_acreage","status","Count","Facility_withdrawal_mg","Rank_DEQ_F_Withdrawls","Rank_Deq_fac","percet_withdrawal"
+"1",51001,1,"Accomack County",9716,58,1,12,12,"High in both datasets",39,3480.674,1,3,41
+"2",51015,15,"Augusta County",3416,101,7,5,4,"High in both datasets",34,461.554,4,4,5
+"3",51033,33,"Caroline County",2272,24,12,34,3,"High in both datasets",11,960.526,2,9,11
+"4",51085,85,"Hanover County",2392,66,10,10,3,"High in both datasets",8,236.0457,9,12,3
+"5",51131,131,"Northampton County",9338,66,2,11,11,"High in both datasets",30,742.087,3,6,9
+"6",51165,165,"Rockingham County",4355,141,4,2,5,"High in both datasets",32,276.896,6,5,3
+"7",51193,193,"Westmoreland County",1474,31,15.5,28,2,"High in both datasets",5,311.381,5,23,4

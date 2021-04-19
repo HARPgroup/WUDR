@@ -1,0 +1,7 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51099,"King George County",99,"Available in DEQ dataset","KING GEORGE",0,0,0,NA,NA,NA
+"2",51057,"Essex County",57,"Available in DEQ dataset","ESSEX",3,0,3,Inf,100,3
+"3",51087,"Henrico County",87,"Available in DEQ dataset","HENRICO",28,0,28,Inf,100,28
+"4",51081,"Greensville County",81,"Available in DEQ dataset","GREENSVILLE",5,0,5,Inf,100,5
+"5",51760,"Richmond city",760,"Available in DEQ dataset",NA,NA,NA,NA,NA,NA,NA
+"6",51730,"Petersburg city",730,"Available in DEQ dataset",NA,NA,NA,NA,NA,NA,NA

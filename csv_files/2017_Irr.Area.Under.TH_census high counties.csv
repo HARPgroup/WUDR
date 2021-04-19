@@ -1,0 +1,7 @@
+"","Countycode","GEOID","NAMELSAD","status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",15,51015,"Augusta County","High in USDA data not in DEQ","AUGUSTA",2550,2351,199,8.46,7.8,198.9
+"2",175,51175,"Southampton County","High in USDA data not in DEQ","SOUTHAMPTON",1624,1610,14,0.87,0.86,13.9664
+"3",53,51053,"Dinwiddie County","High in USDA data not in DEQ","DINWIDDIE",1578,1551,27,1.74,1.71,26.9838
+"4",143,51143,"Pittsylvania County","High in USDA data not in DEQ","PITTSYLVANIA",1492,1414,78,5.52,5.23,78.0316
+"5",83,51083,"Halifax County","High in USDA data not in DEQ","HALIFAX",1061,1009,52,5.15,4.9,51.989
+"6",93,51093,"Isle of Wight County","High in USDA data not in DEQ","ISLE OF WIGHT",934,897,37,4.12,3.96,36.9864

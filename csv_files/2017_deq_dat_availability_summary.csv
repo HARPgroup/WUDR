@@ -1,0 +1,134 @@
+,GEOID,Countycode,NAME,NAMELSAD,F_HydroID,Count,Facility_withdrawal_mg
+26,51051,51,Dickenson,Dickenson County,NA,NA,NA
+34,51069,69,Frederick,Frederick County,NA,NA,NA
+36,51073,73,Gloucester,Gloucester County,NA,NA,NA
+66,51137,137,Orange,Orange County,NA,NA,NA
+72,51149,149,Prince George,Prince George County,NA,NA,NA
+89,51185,185,Tazewell,Tazewell County,NA,NA,NA
+95,51199,199,York,York County,NA,NA,NA
+9,51017,17,Bath,Bath County,NA,NA,NA
+12,51023,23,Botetourt,Botetourt County,NA,NA,NA
+21,51041,41,Chesterfield,Chesterfield County,NA,NA,NA
+33,51067,67,Franklin,Franklin County,NA,NA,NA
+45,51091,91,Highland,Highland County,NA,NA,NA
+47,51095,95,James City,James City County,NA,NA,NA
+53,51107,107,Loudoun,Loudoun County,NA,NA,NA
+55,51111,111,Lunenburg,Lunenburg County,NA,NA,NA
+64,51133,133,Northumberland,Northumberland County,NA,NA,NA
+76,51159,159,Richmond,Richmond County,NA,NA,NA
+86,51179,179,Stafford,Stafford County,NA,NA,NA
+90,51187,187,Warren,Warren County,NA,NA,NA
+3,51005,5,Alleghany,Alleghany County,NA,NA,NA
+15,51029,29,Buckingham,Buckingham County,NA,NA,NA
+44,51089,89,Henry,Henry County,NA,NA,NA
+68,51141,141,Patrick,Patrick County,NA,NA,NA
+52,51105,105,Lee,Lee County,NA,NA,NA
+93,51195,195,Wise,Wise County,NA,NA,NA
+56,51113,113,Madison,Madison County,NA,NA,NA
+51,51103,103,Lancaster,Lancaster County,NA,NA,NA
+75,51157,157,Rappahannock,Rappahannock County,NA,NA,NA
+2,51003,3,Albemarle,Albemarle County,NA,NA,NA
+29,51059,59,Fairfax,Fairfax County,NA,NA,NA
+74,51155,155,Pulaski,Pulaski County,NA,NA,NA
+14,51027,27,Buchanan,Buchanan County,NA,NA,NA
+71,51147,147,Prince Edward,Prince Edward County,NA,NA,NA
+91,51191,191,Washington,Washington County,NA,NA,NA
+120,51720,720,Norton,Norton city,NA,NA,NA
+123,51740,740,Portsmouth,Portsmouth city,NA,NA,NA
+130,51810,810,Virginia Beach,Virginia Beach city,NA,NA,NA
+37,51075,75,Goochland,Goochland County,NA,NA,NA
+39,51079,79,Greene,Greene County,NA,NA,NA
+6,51011,11,Appomattox,Appomattox County,NA,NA,NA
+13,51025,25,Brunswick,Brunswick County,NA,NA,NA
+65,51135,135,Nottoway,Nottoway County,NA,NA,NA
+108,51630,630,Fredericksburg,Fredericksburg city,NA,NA,NA
+25,51049,49,Cumberland,Cumberland County,NA,NA,NA
+116,51685,685,Manassas Park,Manassas Park city,NA,NA,NA
+99,51540,540,Charlottesville,Charlottesville city,NA,NA,NA
+101,51570,570,Colonial Heights,Colonial Heights city,NA,NA,NA
+106,51610,610,Falls Church,Falls Church city,NA,NA,NA
+128,51790,790,Staunton,Staunton city,NA,NA,NA
+132,51830,830,Williamsburg,Williamsburg city,NA,NA,NA
+83,51173,173,Smyth,Smyth County,NA,NA,NA
+96,51510,510,Alexandria,Alexandria city,NA,NA,NA
+7,51013,13,Arlington,Arlington County,NA,NA,NA
+102,51580,580,Covington,Covington city,NA,NA,NA
+105,51600,600,Fairfax,Fairfax city,NA,NA,NA
+94,51197,197,Wythe,Wythe County,NA,NA,NA
+57,51115,115,Mathews,Mathews County,NA,NA,NA
+81,51169,169,Scott,Scott County,NA,NA,NA
+110,51650,650,Hampton,Hampton city,NA,NA,NA
+114,51680,680,Lynchburg,Lynchburg city,NA,NA,NA
+115,51683,683,Manassas,Manassas city,NA,NA,NA
+32,51065,65,Fluvanna,Fluvanna County,NA,NA,NA
+97,51520,520,Bristol,Bristol city,NA,NA,NA
+124,51750,750,Radford,Radford city,NA,NA,NA
+11,51021,21,Bland,Bland County,NA,NA,NA
+133,51840,840,Winchester,Winchester city,NA,NA,NA
+103,51590,590,Danville,Danville city,NA,NA,NA
+131,51820,820,Waynesboro,Waynesboro city,NA,NA,NA
+18,51035,35,Carroll,Carroll County,NA,NA,NA
+112,51670,670,Hopewell,Hopewell city,NA,NA,NA
+98,51530,530,Buena Vista,Buena Vista city,NA,NA,NA
+35,51071,71,Giles,Giles County,NA,NA,NA
+126,51770,770,Roanoke,Roanoke city,NA,NA,NA
+127,51775,775,Salem,Salem city,NA,NA,NA
+107,51620,620,Franklin,Franklin city,NA,NA,NA
+119,51710,710,Norfolk,Norfolk city,NA,NA,NA
+122,51735,735,Poquoson,Poquoson city,NA,NA,NA
+111,51660,660,Harrisonburg,Harrisonburg city,NA,NA,NA
+109,51640,640,Galax,Galax city,NA,NA,NA
+118,51700,700,Newport News,Newport News city,NA,NA,NA
+38,51077,77,Grayson,Grayson County,NA,NA,NA
+5,51009,9,Amherst,Amherst County,NA,NA,NA
+117,51690,690,Martinsville,Martinsville city,NA,NA,NA
+80,51167,167,Russell,Russell County,NA,NA,NA
+104,51595,595,Emporia,Emporia city,NA,NA,NA
+113,51678,678,Lexington,Lexington city,NA,NA,NA
+30,51061,61,Fauquier,Fauquier County,NA,NA,NA
+58,51117,117,Mecklenburg,Mecklenburg County,NA,NA,NA
+54,51109,109,Louisa,Louisa County,NA,NA,NA
+78,51163,163,Rockbridge,Rockbridge County,NA,NA,NA
+1,51001,1,Accomack,Accomack County,73281,23,1673.84777
+42,51085,85,Hanover,Hanover County,72550,13,583.82644
+17,51033,33,Caroline,Caroline County,74063,6,543.92
+63,51131,131,Northampton,Northampton County,67316,26,509.60573
+61,51125,125,Nelson,Nelson County,73215,2,474.32
+48,51097,97,King and Queen,King and Queen County,90580,3,418.6888
+19,51036,36,Charles City,Charles City County,72985,6,344.0851
+28,51057,57,Essex,Essex County,74096,4,340.34
+92,51193,193,Westmoreland,Westmoreland County,450455,3,321.7426
+50,51101,101,King William,King William County,73263,3,285.391
+79,51165,165,Rockingham,Rockingham County,74358,15,254.245
+88,51183,183,Sussex,Sussex County,72117,4,195.364
+49,51099,99,King George,King George County,67681,2,191.501113
+8,51015,15,Augusta,Augusta County,73317,11,175.66
+84,51175,175,Southampton,Southampton County,72735,6,138.2595
+16,51031,31,Campbell,Campbell County,73901,1,121.59
+129,51800,800,Suffolk,Suffolk city,66897,1,111.95
+43,51087,87,Henrico,Henrico County,73410,2,97.14
+24,51047,47,Culpeper,Culpeper County,74457,2,81.2651
+46,51093,93,Isle of Wight,Isle of Wight County,72568,2,71.1
+40,51081,81,Greensville,Greensville County,72606,2,48.91836
+87,51181,181,Surry,Surry County,72669,2,43.719
+60,51121,121,Montgomery,Montgomery County,71679,3,42.2739
+82,51171,171,Shenandoah,Shenandoah County,72118,3,36.38
+31,51063,63,Floyd,Floyd County,72697,1,31.672
+27,51053,53,Dinwiddie,Dinwiddie County,73619,6,31.129
+67,51139,139,Page,Page County,73015,1,25.55
+62,51127,127,New Kent,New Kent County,72289,2,24.19
+59,51119,119,Middlesex,Middlesex County,74205,2,22.39
+22,51043,43,Clarke,Clarke County,73682,2,16.56
+10,51019,19,Bedford,Bedford County,72431,1,16.15
+20,51037,37,Charlotte,Charlotte County,73287,1,15.35
+73,51153,153,Prince William,Prince William County,72245,4,14.541
+4,51007,7,Amelia,Amelia County,71580,2,9.343
+70,51145,145,Powhatan,Powhatan County,72829,1,4.3
+121,51730,730,Petersburg,Petersburg city,73052,1,3.6
+125,51760,760,Richmond,Richmond city,73710,1,1.19
+100,51550,550,Chesapeake,Chesapeake city,67165,1,0.896212
+77,51161,161,Roanoke,Roanoke County,72039,1,0.75
+85,51177,177,Spotsylvania,Spotsylvania County,71952,1,0.146
+41,51083,83,Halifax,Halifax County,74339,1,0
+69,51143,143,Pittsylvania,Pittsylvania County,74035,2,0
+23,51045,45,Craig,Craig County,73939,1,0

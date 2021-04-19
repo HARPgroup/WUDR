@@ -141,7 +141,7 @@ USDA_high_counties<-rbind.data.frame(High_rank_counties,High_USDA_acregae_counti
 dat<-deq_agr %>%
   filter(FIPS.Code %in% USDA_high_counties$GEOID)
 
-###Filter for Summer months
+###Filter for Summer months 
 
 dat_summer<-dat %>%
   filter(between(Month, 5, 9))

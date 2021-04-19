@@ -1,0 +1,5 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51149,"Prince George County",149,"Available in DEQ dataset","PRINCE GEORGE",6,0,6,Inf,100,6
+"2",51057,"Essex County",57,"Available in DEQ dataset","ESSEX",0,0,0,NA,NA,NA
+"3",51081,"Greensville County",81,"Available in DEQ dataset","GREENSVILLE",0,0,0,NA,NA,NA
+"4",51097,"King and Queen County",97,"Available in DEQ dataset","KING AND QUEEN",16,0,16,Inf,100,16

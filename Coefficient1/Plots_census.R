@@ -8,23 +8,24 @@ library(rgdal)
 library(stringr)
 
 load(paste0(WUDR_github,"/dat_load/VA_shapefile.RData"))
+county.codes <- read_csv(paste0(WUDR_github, "/csv_files/county_codes_census.csv")) 
 
 df.summary <- read_csv(paste0(WUDR_github, "/csv_files/Percentage Irri.data.Under TH.csv")) 
-county.codes <- read_csv(paste0(WUDR_github, "/csv_files/countycodes.csv")) 
+
 
 df.summary <- df.summary[,-1]
 
-df.summary <- merge.data.frame(df.summary, county.codes, by.x = "County", by.y = "COUNTY_NAME")
+df.summary <- merge.data.frame(df.summary, county.codes, by.x = "County", by.y = "County_Name")
 
 df.summary$Irr.Area.above.TH <- ifelse(df.summary$Total.Irri.Area == 0, df.summary$Irr.Area.above.TH == NA, df.summary$Irr.Area.above.TH )
 df.summary$Irr.Area.Under.TH <- ifelse(df.summary$Total.Irri.Area == 0, df.summary$Irr.Area.Under.TH == NA, df.summary$Irr.Area.Under.TH )
 
 
 VA_counties@data$Countycode = str_remove(VA_counties@data$COUNTYFP, "^0+")
-plotdat<-sp::merge(VA_counties,df.summary, by.x = "Countycode", by.y = "COUNTY_CODE")
+plotdat<-sp::merge(VA_counties,df.summary, by.x = "Countycode", by.y = "County_Code")
 
 #Check if merge was correct
-sum(df.summary$Irr.Area.above.TH)
+sum(df.summary$Irr.Area.above.TH, na.rm = TRUE)
 sum(plotdat@data$Irr.Area.above.TH, na.rm=TRUE)
 
 p1<-tm_shape(plotdat)+
@@ -42,7 +43,7 @@ p1<-tm_shape(plotdat)+
 p1
 
 tmap_save(p1, paste0(WUDR_github,"/plots/Irr.Area.Under.TH.png"),  width = 10, height = 5, units = 'in')
-tmap_save(p1, paste0(WUDR_github,"/plots/Irr.Area.Under.TH.html"),  width = 10, height = 5, units = 'in')
+map_save(p1, paste0(WUDR_github,"/plots/Irr.Area.Under.TH.html"),  width = 10, height = 5, units = 'in')
 
 p2<-tm_shape(plotdat)+
   tm_polygons("Pct.under.TH.of.total.Irr.area", title = "Percentage Under threshold ",

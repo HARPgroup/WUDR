@@ -1,0 +1,7 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51057,"Essex County",57,"Available in DEQ dataset","ESSEX",0,0,0,NA,NA,NA
+"2",51127,"New Kent County",127,"Available in DEQ dataset","NEW KENT",0,0,0,NA,NA,NA
+"3",51087,"Henrico County",87,"Available in DEQ dataset","HENRICO",7,0,7,Inf,100,7
+"4",51760,"Richmond city",760,"Available in DEQ dataset",NA,NA,NA,NA,NA,NA,NA
+"5",51730,"Petersburg city",730,"Available in DEQ dataset",NA,NA,NA,NA,NA,NA,NA
+"6",51097,"King and Queen County",97,"Available in DEQ dataset","KING AND QUEEN",18,0,18,Inf,100,18

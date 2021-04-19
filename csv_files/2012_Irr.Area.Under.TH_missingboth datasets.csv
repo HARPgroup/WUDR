@@ -1,0 +1,39 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51103,"Lancaster County",103,"Missing in both datsets","LANCASTER",0,FALSE,FALSE,NA,NA,NA
+"2",51027,"Buchanan County",27,"Missing in both datsets","BUCHANAN",0,FALSE,FALSE,NA,NA,NA
+"3",51720,"Norton city",720,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"4",51740,"Portsmouth city",740,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"5",51630,"Fredericksburg city",630,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"6",51685,"Manassas Park city",685,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"7",51540,"Charlottesville city",540,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"8",51570,"Colonial Heights city",570,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"9",51610,"Falls Church city",610,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"10",51790,"Staunton city",790,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"11",51830,"Williamsburg city",830,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"12",51510,"Alexandria city",510,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"13",51013,"Arlington County",13,"Missing in both datsets","ARLINGTON",0,FALSE,FALSE,NA,NA,NA
+"14",51580,"Covington city",580,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"15",51600,"Fairfax city",600,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"16",51650,"Hampton city",650,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"17",51680,"Lynchburg city",680,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"18",51683,"Manassas city",683,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"19",51520,"Bristol city",520,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"20",51750,"Radford city",750,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"21",51021,"Bland County",21,"Missing in both datsets","BLAND",0,FALSE,FALSE,NA,NA,NA
+"22",51840,"Winchester city",840,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"23",51590,"Danville city",590,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"24",51820,"Waynesboro city",820,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"25",51670,"Hopewell city",670,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"26",51530,"Buena Vista city",530,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"27",51770,"Roanoke city",770,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"28",51775,"Salem city",775,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"29",51620,"Franklin city",620,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"30",51710,"Norfolk city",710,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"31",51735,"Poquoson city",735,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"32",51660,"Harrisonburg city",660,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"33",51640,"Galax city",640,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"34",51700,"Newport News city",700,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"35",51009,"Amherst County",9,"Missing in both datsets","AMHERST",0,FALSE,FALSE,NA,NA,NA
+"36",51690,"Martinsville city",690,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"37",51595,"Emporia city",595,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA
+"38",51678,"Lexington city",678,"Missing in both datsets",NA,NA,NA,NA,NA,NA,NA

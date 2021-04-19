@@ -97,5 +97,5 @@ colnames(df) <- c("Pct.under.TH.of.total.Irr.area", "Pct.under.TH.of.Irri.area.a
 df$Total.Irri.Area <- apply(df[,c(3,4)],1,sum)
 df <- df[,c(5,6,4,3,2,1)]
 
-write.csv(df, paste0(WUDR_github,"/csv_files/Percentage Irri.data.Under TH.csv"))
+# write.csv(df, paste0(WUDR_github,"/csv_files/Percentage Irri.data.Under TH.csv"))
 

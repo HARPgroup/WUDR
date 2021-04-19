@@ -1,0 +1,48 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51069,"Frederick County",69,"Available in USDA dataset","FREDERICK",38,23,15,65.22,39.47,14.9986
+"2",51073,"Gloucester County",73,"Available in USDA dataset","GLOUCESTER",13,0,13,Inf,100,13
+"3",51137,"Orange County",137,"Available in USDA dataset","ORANGE",214,175,39,22.29,18.22,38.9908
+"4",51199,"York County",199,"Available in USDA dataset","YORK",11,0,11,Inf,100,11
+"5",51023,"Botetourt County",23,"Available in USDA dataset","BOTETOURT",10,0,10,Inf,100,10
+"6",51041,"Chesterfield County",41,"Available in USDA dataset","CHESTERFIELD",75,47,28,59.57,37.33,27.9975
+"7",51067,"Franklin County",67,"Available in USDA dataset","FRANKLIN",441,334,107,32.04,24.26,106.9866
+"8",51095,"James City County",95,"Available in USDA dataset","JAMES CITY",40,13,27,207.69,67.5,27
+"9",51107,"Loudoun County",107,"Available in USDA dataset","LOUDOUN",392,150,242,161.33,61.73,241.9816
+"10",51111,"Lunenburg County",111,"Available in USDA dataset","LUNENBURG",1408,1393,15,1.08,1.07,15.0656
+"11",51159,"Richmond County",159,"Available in USDA dataset","RICHMOND",29,13,16,123.08,55.17,15.9993
+"12",51179,"Stafford County",179,"Available in USDA dataset","STAFFORD",10,0,10,Inf,100,10
+"13",51187,"Warren County",187,"Available in USDA dataset","WARREN",10,0,10,Inf,100,10
+"14",51029,"Buckingham County",29,"Available in USDA dataset","BUCKINGHAM",65,46,19,41.3,29.23,18.9995
+"15",51089,"Henry County",89,"Available in USDA dataset","HENRY",43,29,14,48.28,32.56,14.0008
+"16",51141,"Patrick County",141,"Available in USDA dataset","PATRICK",213,136,77,56.62,36.15,76.9995
+"17",51105,"Lee County",105,"Available in USDA dataset","LEE",32,0,32,Inf,100,32
+"18",51195,"Wise County",195,"Available in USDA dataset","WISE",27,12,15,125,55.56,15.0012
+"19",51113,"Madison County",113,"Available in USDA dataset","MADISON",80,13,67,515.38,83.75,67
+"20",51103,"Lancaster County",103,"Available in USDA dataset","LANCASTER",12,0,12,Inf,100,12
+"21",51157,"Rappahannock County",157,"Available in USDA dataset","RAPPAHANNOCK",61,0,61,Inf,100,61
+"22",51003,"Albemarle County",3,"Available in USDA dataset","ALBEMARLE",783,670,113,16.87,14.43,112.9869
+"23",51059,"Fairfax County",59,"Available in USDA dataset","FAIRFAX",60,0,60,Inf,100,60
+"24",51155,"Pulaski County",155,"Available in USDA dataset","PULASKI",28,0,28,Inf,100,28
+"25",51147,"Prince Edward County",147,"Available in USDA dataset","PRINCE EDWARD",14,0,14,Inf,100,14
+"26",51191,"Washington County",191,"Available in USDA dataset","WASHINGTON",122,71,51,71.83,41.8,50.996
+"27",51810,"Virginia Beach city",810,"Available in USDA dataset","VIRGINIA BEACH CITY",315,250,65,26,20.63,64.9845
+"28",51075,"Goochland County",75,"Available in USDA dataset","GOOCHLAND",112,92,20,21.74,17.86,20.0032
+"29",51079,"Greene County",79,"Available in USDA dataset","GREENE",24,0,24,Inf,100,24
+"30",51011,"Appomattox County",11,"Available in USDA dataset","APPOMATTOX",24,0,24,Inf,100,24
+"31",51025,"Brunswick County",25,"Available in USDA dataset","BRUNSWICK",2115,2109,6,0.28,0.28,5.922
+"32",51135,"Nottoway County",135,"Available in USDA dataset","NOTTOWAY",44,0,44,Inf,100,44
+"33",51049,"Cumberland County",49,"Available in USDA dataset","CUMBERLAND",167,144,23,15.97,13.77,22.9959
+"34",51173,"Smyth County",173,"Available in USDA dataset","SMYTH",28,0,28,Inf,100,28
+"35",51197,"Wythe County",197,"Available in USDA dataset","WYTHE",18,0,18,Inf,100,18
+"36",51115,"Mathews County",115,"Available in USDA dataset","MATHEWS",10,0,10,Inf,100,10
+"37",51169,"Scott County",169,"Available in USDA dataset","SCOTT",13,0,13,Inf,100,13
+"38",51065,"Fluvanna County",65,"Available in USDA dataset","FLUVANNA",79,61,18,29.51,22.78,17.9962
+"39",51021,"Bland County",21,"Available in USDA dataset","BLAND",801,797,4,0.5,0.5,4.005
+"40",51035,"Carroll County",35,"Available in USDA dataset","CARROLL",597,581,16,2.75,2.68,15.9996
+"41",51071,"Giles County",71,"Available in USDA dataset","GILES",27,0,27,Inf,100,27
+"42",51077,"Grayson County",77,"Available in USDA dataset","GRAYSON",160,139,21,15.11,13.12,20.992
+"43",51009,"Amherst County",9,"Available in USDA dataset","AMHERST",176,153,23,15.03,13.07,23.0032
+"44",51061,"Fauquier County",61,"Available in USDA dataset","FAUQUIER",452,235,217,92.34,48.01,217.0052
+"45",51117,"Mecklenburg County",117,"Available in USDA dataset","MECKLENBURG",4163,4062,101,2.49,2.43,101.1609
+"46",51109,"Louisa County",109,"Available in USDA dataset","LOUISA",215,125,90,72,41.86,89.999
+"47",51163,"Rockbridge County",163,"Available in USDA dataset","ROCKBRIDGE",83,43,40,93.02,48.19,39.9977

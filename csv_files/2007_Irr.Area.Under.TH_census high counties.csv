@@ -1,0 +1,12 @@
+"","Countycode","GEOID","NAMELSAD","status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",165,51165,"Rockingham County","High in USDA data not in DEQ","ROCKINGHAM",4808,4567,241,5.28,5.01,240.8808
+"2",143,51143,"Pittsylvania County","High in USDA data not in DEQ","PITTSYLVANIA",4187,4123,64,1.55,1.53,64.0611
+"3",107,51107,"Loudoun County","High in USDA data not in DEQ","LOUDOUN",3533,3391,142,4.19,4.02,142.0266
+"4",117,51117,"Mecklenburg County","High in USDA data not in DEQ","MECKLENBURG",3235,3175,60,1.89,1.85,59.8475
+"5",53,51053,"Dinwiddie County","High in USDA data not in DEQ","DINWIDDIE",1885,1860,25,1.34,1.33,25.0705
+"6",25,51025,"Brunswick County","High in USDA data not in DEQ","BRUNSWICK",1316,1290,26,2.02,1.98,26.0568
+"7",83,51083,"Halifax County","High in USDA data not in DEQ","HALIFAX",1549,1426,123,8.63,7.94,122.9906
+"8",183,51183,"Sussex County","High in USDA data not in DEQ","SUSSEX",1645,1645,0,0,0,0
+"9",7,51007,"Amelia County","High in USDA data not in DEQ","AMELIA",562,524,38,7.25,6.76,37.9912
+"10",19,51019,"Bedford County","High in USDA data not in DEQ","BEDFORD",567,526,41,7.79,7.23,40.9941
+"11",31,51031,"Campbell County","High in USDA data not in DEQ","CAMPBELL",779,672,107,15.92,13.74,107.0346

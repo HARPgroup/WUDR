@@ -1,0 +1,55 @@
+"","Countycode","GEOID","NAMELSAD","Count","Facility_withdrawal_mg","Irrigated_Acreage","Irrigated_Operations"
+"1",1,51001,"Accomack County",42,1819.128198,6508,47
+"2",101,51101,"King William County",8,702.694,2690,15
+"3",107,51107,"Loudoun County",4,32.6308,3533,76
+"4",111,51111,"Lunenburg County",7,8.66,770,26
+"5",117,51117,"Mecklenburg County",8,7.17,3235,81
+"6",119,51119,"Middlesex County",5,90.576,480,3
+"7",121,51121,"Montgomery County",3,46.54,383,21
+"8",125,51125,"Nelson County",7,468.463,775,37
+"9",127,51127,"New Kent County",5,138.01,496,9
+"10",131,51131,"Northampton County",38,882.595554,9286,60
+"11",137,51137,"Orange County",1,70,627,26
+"12",139,51139,"Page County",8,12.17,295,14
+"13",141,51141,"Patrick County",2,1,432,36
+"14",143,51143,"Pittsylvania County",88,65.3438,4187,127
+"15",145,51145,"Powhatan County",5,3.3,28,7
+"16",147,51147,"Prince Edward County",1,0,124,11
+"17",15,51015,"Augusta County",31,592.1592,3813,94
+"18",153,51153,"Prince William County",2,2.632,685,26
+"19",161,51161,"Roanoke County",1,0,93,14
+"20",163,51163,"Rockbridge County",2,0,110,15
+"21",165,51165,"Rockingham County",34,167.963,4808,137
+"22",167,51167,"Russell County",1,0,134,15
+"23",171,51171,"Shenandoah County",12,29.928,756,38
+"24",173,51173,"Smyth County",1,0,188,24
+"25",175,51175,"Southampton County",11,259.1787,3507,34
+"26",177,51177,"Spotsylvania County",2,25.43,144,13
+"27",181,51181,"Surry County",3,39.699,1028,14
+"28",183,51183,"Sussex County",7,41.22,1644,14
+"29",19,51019,"Bedford County",2,11.9226,567,32
+"30",193,51193,"Westmoreland County",6,863.926,1674,24
+"31",25,51025,"Brunswick County",5,0,1316,27
+"32",31,51031,"Campbell County",3,59.51,780,42
+"33",33,51033,"Caroline County",11,541.364,2111,24
+"34",35,51035,"Carroll County",6,0,601,20
+"35",36,51036,"Charles City County",4,11.9,739,10
+"36",37,51037,"Charlotte County",4,23.2,731,49
+"37",41,51041,"Chesterfield County",5,37.9,185,14
+"38",43,51043,"Clarke County",2,44,515,20
+"39",47,51047,"Culpeper County",2,410.727,1266,29
+"40",53,51053,"Dinwiddie County",36,97.3087,1884,26
+"41",550,51550,"Chesapeake city",4,1.440575,239,34
+"42",59,51059,"Fairfax County",4,17.4,40,23
+"43",63,51063,"Floyd County",1,0,108,40
+"44",67,51067,"Franklin County",11,0,872,54
+"45",69,51069,"Frederick County",3,13.534,299,32
+"46",7,51007,"Amelia County",5,15.681,561,17
+"47",73,51073,"Gloucester County",1,0,58,20
+"48",75,51075,"Goochland County",2,0,21,10
+"49",800,51800,"Suffolk city",6,180.6075,616,23
+"50",810,51810,"Virginia Beach city",3,0,194,22
+"51",83,51083,"Halifax County",15,9.12,1549,59
+"52",85,51085,"Hanover County",18,274.1886,3188,50
+"53",93,51093,"Isle of Wight County",13,123,702,15
+"54",99,51099,"King George County",2,175.802,672,11

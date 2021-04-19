@@ -1,0 +1,134 @@
+"","Countycode","NAMELSAD","Count.x","Facility_withdrawal_mg.x","Count.y","Facility_withdrawal_mg.y","withdiff","facdiff"
+"1",1,"Accomack County",39,3480.674,23,1673.84777,-1806.82623,-16
+"2",3,"Albemarle County",NA,NA,NA,NA,NA,NA
+"3",5,"Alleghany County",1,0,NA,NA,NA,NA
+"4",7,"Amelia County",6,42.093,2,9.343,-32.75,-4
+"5",9,"Amherst County",NA,NA,NA,NA,NA,NA
+"6",11,"Appomattox County",NA,NA,NA,NA,NA,NA
+"7",13,"Arlington County",NA,NA,NA,NA,NA,NA
+"8",15,"Augusta County",34,461.554,11,175.66,-285.894,-23
+"9",17,"Bath County",NA,NA,NA,NA,NA,NA
+"10",19,"Bedford County",NA,NA,1,16.15,NA,NA
+"11",21,"Bland County",NA,NA,NA,NA,NA,NA
+"12",23,"Botetourt County",NA,NA,NA,NA,NA,NA
+"13",25,"Brunswick County",4,0,NA,NA,NA,NA
+"14",27,"Buchanan County",NA,NA,NA,NA,NA,NA
+"15",29,"Buckingham County",NA,NA,NA,NA,NA,NA
+"16",31,"Campbell County",4,0,1,121.59,121.59,-3
+"17",33,"Caroline County",11,960.526,6,543.92,-416.606,-5
+"18",35,"Carroll County",3,0,NA,NA,NA,NA
+"19",36,"Charles City County",4,268.67,6,344.0851,75.4151,2
+"20",37,"Charlotte County",3,0,1,15.35,15.35,-2
+"21",41,"Chesterfield County",6,55,NA,NA,NA,NA
+"22",43,"Clarke County",3,42.8,2,16.56,-26.24,-1
+"23",45,"Craig County",NA,NA,1,0,NA,NA
+"24",47,"Culpeper County",4,4.11,2,81.2651,77.1551,-2
+"25",49,"Cumberland County",NA,NA,NA,NA,NA,NA
+"26",51,"Dickenson County",NA,NA,NA,NA,NA,NA
+"27",53,"Dinwiddie County",41,14.055,6,31.129,17.074,-35
+"28",57,"Essex County",6,140.34,4,340.34,200,-2
+"29",59,"Fairfax County",3,14.599,NA,NA,NA,NA
+"30",61,"Fauquier County",NA,NA,NA,NA,NA,NA
+"31",63,"Floyd County",NA,NA,1,31.672,NA,NA
+"32",65,"Fluvanna County",NA,NA,NA,NA,NA,NA
+"33",67,"Franklin County",8,11.81,NA,NA,NA,NA
+"34",69,"Frederick County",3,9,NA,NA,NA,NA
+"35",71,"Giles County",NA,NA,NA,NA,NA,NA
+"36",73,"Gloucester County",NA,NA,NA,NA,NA,NA
+"37",75,"Goochland County",1,0,NA,NA,NA,NA
+"38",77,"Grayson County",NA,NA,NA,NA,NA,NA
+"39",79,"Greene County",1,0,NA,NA,NA,NA
+"40",81,"Greensville County",3,50.8297,2,48.91836,-1.91134,-1
+"41",83,"Halifax County",14,26.816,1,0,-26.816,-13
+"42",85,"Hanover County",8,236.0457,13,583.82644,347.78074,5
+"43",87,"Henrico County",NA,NA,2,97.14,NA,NA
+"44",89,"Henry County",NA,NA,NA,NA,NA,NA
+"45",91,"Highland County",NA,NA,NA,NA,NA,NA
+"46",93,"Isle of Wight County",11,97.5,2,71.1,-26.4,-9
+"47",95,"James City County",NA,NA,NA,NA,NA,NA
+"48",97,"King and Queen County",4,256.91,3,418.6888,161.7788,-1
+"49",99,"King George County",NA,NA,2,191.501113,NA,NA
+"50",101,"King William County",7,143.51,3,285.391,141.881,-4
+"51",103,"Lancaster County",NA,NA,NA,NA,NA,NA
+"52",105,"Lee County",NA,NA,NA,NA,NA,NA
+"53",107,"Loudoun County",3,36.6,NA,NA,NA,NA
+"54",109,"Louisa County",NA,NA,NA,NA,NA,NA
+"55",111,"Lunenburg County",7,10,NA,NA,NA,NA
+"56",113,"Madison County",2,0,NA,NA,NA,NA
+"57",115,"Mathews County",2,0,NA,NA,NA,NA
+"58",117,"Mecklenburg County",7,5.59,NA,NA,NA,NA
+"59",119,"Middlesex County",4,13.4,2,22.39,8.99,-2
+"60",121,"Montgomery County",3,17,3,42.2739,25.2739,0
+"61",125,"Nelson County",6,192.13,2,474.32,282.19,-4
+"62",127,"New Kent County",2,11.89,2,24.19,12.3,0
+"63",131,"Northampton County",30,742.087,26,509.60573,-232.48127,-4
+"64",133,"Northumberland County",NA,NA,NA,NA,NA,NA
+"65",135,"Nottoway County",1,0,NA,NA,NA,NA
+"66",137,"Orange County",2,0.45,NA,NA,NA,NA
+"67",139,"Page County",7,34.476,1,25.55,-8.926,-6
+"68",141,"Patrick County",NA,NA,NA,NA,NA,NA
+"69",143,"Pittsylvania County",99,86.068,2,0,-86.068,-97
+"70",145,"Powhatan County",6,0.58,1,4.3,3.72,-5
+"71",147,"Prince Edward County",1,38.6,NA,NA,NA,NA
+"72",149,"Prince George County",1,0,NA,NA,NA,NA
+"73",153,"Prince William County",2,3.4,4,14.541,11.141,2
+"74",155,"Pulaski County",NA,NA,NA,NA,NA,NA
+"75",157,"Rappahannock County",NA,NA,NA,NA,NA,NA
+"76",159,"Richmond County",1,0,NA,NA,NA,NA
+"77",161,"Roanoke County",4,20.7,1,0.75,-19.95,-3
+"78",163,"Rockbridge County",1,0,NA,NA,NA,NA
+"79",165,"Rockingham County",32,276.896,15,254.245,-22.651,-17
+"80",167,"Russell County",1,0,NA,NA,NA,NA
+"81",169,"Scott County",NA,NA,NA,NA,NA,NA
+"82",171,"Shenandoah County",13,30.277,3,36.38,6.103,-10
+"83",173,"Smyth County",1,0,NA,NA,NA,NA
+"84",175,"Southampton County",3,41,6,138.2595,97.2595,3
+"85",177,"Spotsylvania County",1,60.56,1,0.146,-60.414,0
+"86",179,"Stafford County",NA,NA,NA,NA,NA,NA
+"87",181,"Surry County",2,53.203,2,43.719,-9.484,0
+"88",183,"Sussex County",3,38.6,4,195.364,156.764,1
+"89",185,"Tazewell County",NA,NA,NA,NA,NA,NA
+"90",187,"Warren County",NA,NA,NA,NA,NA,NA
+"91",191,"Washington County",NA,NA,NA,NA,NA,NA
+"92",193,"Westmoreland County",5,311.381,3,321.7426,10.3616,-2
+"93",195,"Wise County",NA,NA,NA,NA,NA,NA
+"94",197,"Wythe County",NA,NA,NA,NA,NA,NA
+"95",199,"York County",NA,NA,NA,NA,NA,NA
+"96",510,"Alexandria city",NA,NA,NA,NA,NA,NA
+"97",520,"Bristol city",NA,NA,NA,NA,NA,NA
+"98",530,"Buena Vista city",NA,NA,NA,NA,NA,NA
+"99",540,"Charlottesville city",NA,NA,NA,NA,NA,NA
+"100",550,"Chesapeake city",1,0,1,0.896212,0.896212,0
+"101",570,"Colonial Heights city",NA,NA,NA,NA,NA,NA
+"102",580,"Covington city",NA,NA,NA,NA,NA,NA
+"103",590,"Danville city",NA,NA,NA,NA,NA,NA
+"104",595,"Emporia city",NA,NA,NA,NA,NA,NA
+"105",600,"Fairfax city",NA,NA,NA,NA,NA,NA
+"106",610,"Falls Church city",NA,NA,NA,NA,NA,NA
+"107",620,"Franklin city",NA,NA,NA,NA,NA,NA
+"108",630,"Fredericksburg city",NA,NA,NA,NA,NA,NA
+"109",640,"Galax city",NA,NA,NA,NA,NA,NA
+"110",650,"Hampton city",NA,NA,NA,NA,NA,NA
+"111",660,"Harrisonburg city",NA,NA,NA,NA,NA,NA
+"112",670,"Hopewell city",NA,NA,NA,NA,NA,NA
+"113",678,"Lexington city",NA,NA,NA,NA,NA,NA
+"114",680,"Lynchburg city",NA,NA,NA,NA,NA,NA
+"115",683,"Manassas city",NA,NA,NA,NA,NA,NA
+"116",685,"Manassas Park city",NA,NA,NA,NA,NA,NA
+"117",690,"Martinsville city",NA,NA,NA,NA,NA,NA
+"118",700,"Newport News city",NA,NA,NA,NA,NA,NA
+"119",710,"Norfolk city",NA,NA,NA,NA,NA,NA
+"120",720,"Norton city",NA,NA,NA,NA,NA,NA
+"121",730,"Petersburg city",NA,NA,1,3.6,NA,NA
+"122",735,"Poquoson city",NA,NA,NA,NA,NA,NA
+"123",740,"Portsmouth city",NA,NA,NA,NA,NA,NA
+"124",750,"Radford city",NA,NA,NA,NA,NA,NA
+"125",760,"Richmond city",NA,NA,1,1.19,NA,NA
+"126",770,"Roanoke city",NA,NA,NA,NA,NA,NA
+"127",775,"Salem city",NA,NA,NA,NA,NA,NA
+"128",790,"Staunton city",NA,NA,NA,NA,NA,NA
+"129",800,"Suffolk city",6,208.64,1,111.95,-96.69,-5
+"130",810,"Virginia Beach city",2,0,NA,NA,NA,NA
+"131",820,"Waynesboro city",NA,NA,NA,NA,NA,NA
+"132",830,"Williamsburg city",NA,NA,NA,NA,NA,NA
+"133",840,"Winchester city",NA,NA,NA,NA,NA,NA

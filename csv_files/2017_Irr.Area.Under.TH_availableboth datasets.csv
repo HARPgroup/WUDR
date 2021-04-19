@@ -1,0 +1,38 @@
+"","GEOID","NAMELSAD","Countycode","Data.Status","County_Name","Total.Irri.Area","Irr.Area.above.TH","Irr.Area.Under.TH","Pct.under.TH.of.Irri.area.abv.TH","Pct.under.TH.of.total.Irr.area","AcreageUnderTh"
+"1",51015,"Augusta County",15,"Available in both datasets","AUGUSTA",2550,2351,199,8.46,7.8,198.9
+"2",51037,"Charlotte County",37,"Available in both datasets","CHARLOTTE",534,440,94,21.36,17.6,93.984
+"3",51053,"Dinwiddie County",53,"Available in both datasets","DINWIDDIE",1578,1551,27,1.74,1.71,26.9838
+"4",51085,"Hanover County",85,"Available in both datasets","HANOVER",3569,3390,179,5.28,5.02,179.1638
+"5",51125,"Nelson County",125,"Available in both datasets","NELSON",1016,950,66,6.95,6.5,66.04
+"6",51131,"Northampton County",131,"Available in both datasets","NORTHAMPTON",5857,5849,8,0.14,0.14,8.1998
+"7",51145,"Powhatan County",145,"Available in both datasets","POWHATAN",63,47,16,34.04,25.4,16.002
+"8",51161,"Roanoke County",161,"Available in both datasets","ROANOKE",71,0,71,Inf,100,71
+"9",51177,"Spotsylvania County",177,"Available in both datasets","SPOTSYLVANIA",96,69,27,39.13,28.12,26.9952
+"10",51007,"Amelia County",7,"Available in both datasets","AMELIA",205,186,19,10.22,9.27,19.0035
+"11",51019,"Bedford County",19,"Available in both datasets","BEDFORD",51,0,51,Inf,100,51
+"12",51033,"Caroline County",33,"Available in both datasets","CAROLINE",3411,3392,19,0.56,0.56,19.1016
+"13",51036,"Charles City County",36,"Available in both datasets","CHARLES CITY",1376,1361,15,1.1,1.09,14.9984
+"14",51083,"Halifax County",83,"Available in both datasets","HALIFAX",1061,1009,52,5.15,4.9,51.989
+"15",51127,"New Kent County",127,"Available in both datasets","NEW KENT",271,253,18,7.11,6.64,17.9944
+"16",51143,"Pittsylvania County",143,"Available in both datasets","PITTSYLVANIA",1492,1414,78,5.52,5.23,78.0316
+"17",51165,"Rockingham County",165,"Available in both datasets","ROCKINGHAM",5526,5244,282,5.38,5.1,281.826
+"18",51175,"Southampton County",175,"Available in both datasets","SOUTHAMPTON",1624,1610,14,0.87,0.86,13.9664
+"19",51063,"Floyd County",63,"Available in both datasets","FLOYD",182,60,122,203.33,67.03,121.9946
+"20",51193,"Westmoreland County",193,"Available in both datasets","WESTMORELAND",882,771,111,14.4,12.59,111.0438
+"21",51031,"Campbell County",31,"Available in both datasets","CAMPBELL",313,273,40,14.65,12.78,40.0014
+"22",51121,"Montgomery County",121,"Available in both datasets","MONTGOMERY",323,287,36,12.54,11.15,36.0145
+"23",51093,"Isle of Wight County",93,"Available in both datasets","ISLE OF WIGHT",934,897,37,4.12,3.96,36.9864
+"24",51171,"Shenandoah County",171,"Available in both datasets","SHENANDOAH",893,794,99,12.47,11.09,99.0337
+"25",51101,"King William County",101,"Available in both datasets","KING WILLIAM",1618,1601,17,1.06,1.05,16.989
+"26",51153,"Prince William County",153,"Available in both datasets","PRINCE WILLIAM",943,909,34,3.74,3.61,34.0423
+"27",51181,"Surry County",181,"Available in both datasets","SURRY",929,919,10,1.09,1.08,10.0332
+"28",51043,"Clarke County",43,"Available in both datasets","CLARKE",143,109,34,31.19,23.78,34.0054
+"29",51045,"Craig County",45,"Available in both datasets","CRAIG",115,96,19,19.79,16.52,18.998
+"30",51550,"Chesapeake city",550,"Available in both datasets","CHESAPEAKE CITY",72,15,57,380,79.17,57.0024
+"31",51183,"Sussex County",183,"Available in both datasets","SUSSEX",699,684,15,2.19,2.15,15.0285
+"32",51800,"Suffolk city",800,"Available in both datasets","SUFFOLK CITY",585,525,60,11.43,10.26,60.021
+"33",51047,"Culpeper County",47,"Available in both datasets","CULPEPER",615,448,167,37.28,27.15,166.9725
+"34",51119,"Middlesex County",119,"Available in both datasets","MIDDLESEX",270,244,26,10.66,9.63,26.001
+"35",51139,"Page County",139,"Available in both datasets","PAGE",108,88,20,22.73,18.52,20.0016
+"36",51097,"King and Queen County",97,"Available in both datasets","KING AND QUEEN",1221,1184,37,3.12,3.03,36.9963
+"37",51001,"Accomack County",1,"Available in both datasets","ACCOMACK",5079,5021,58,1.16,1.14,57.9006

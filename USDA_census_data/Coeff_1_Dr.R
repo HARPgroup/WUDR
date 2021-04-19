@@ -75,13 +75,13 @@ for (i in 1:length(size.bins)){
   bin.char$cntys_w_Ds[i] <- sum(has.ops) - sum(has.acres)
   
   # create and save figure
-  # setwd(WUDR_github)
-  # ppi<-300
-  # filename<-paste0(size.bins[i],".png")
-  # png(file=filename,width=4*ppi,height=4*ppi,res=ppi)
-  # hist(bin.table$irr.perc, main=size.bins[i], xlab="Percent of Farm Irrigated")
-  # abline(v=mean(bin.table$irr.perc,na.rm=TRUE), col="red",lwd=2)
-  # dev.off()
+  setwd(WUDR_github)
+  ppi<-300
+  filename<-paste0(size.bins[i],".png")
+  png(file=filename,width=4*ppi,height=4*ppi,res=ppi)
+  hist(bin.table$irr.perc, main=size.bins[i], xlab="Percent of Farm Irrigated")
+  abline(v=mean(bin.table$irr.perc,na.rm=TRUE), col="red",lwd=2)
+  dev.off()
   
   # Save size category table to list
   bin.list[[i]] <- bin.table
