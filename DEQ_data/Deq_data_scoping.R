@@ -2,8 +2,8 @@ WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR_local"
 setwd(WUDR_github)
 
 pacman::p_load(dplyr, rgdal, tmap)
-year=2017
-deq_dat<-read.csv(paste0(WUDR_github,"/csv_files/2017withdrawal_DEQ.csv"))
+year=2002
+deq_dat<-read.csv(paste0(WUDR_github,"/csv_files/2002withdrawal_DEQ.csv"))
 VA_counties<-readOGR("F:/My Drive/VA_shapefile_updated", layer="VA_counties_new")
 
 levels(deq_dat$Use.Type)
