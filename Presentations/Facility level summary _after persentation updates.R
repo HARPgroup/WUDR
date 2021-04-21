@@ -56,8 +56,12 @@ fsummary_2001 <- facility_summary(2001)
 
 # Difference in facilties
 
-#Facilties missing in 2017 
-dat_diff_02_17 <- anti_join(fsummary_2002, fsummary_2017, by = c("F_HydroID" = "F_HydroID"))
+# Change the file accordingly
+
+# Facilties missing in 2017 
+dat_diff_16_17 <- anti_join(fsummary_2016, fsummary_2017, by = c("F_HydroID" = "F_HydroID"))
 
 #New facilties added in 2017
-dat_diff_17_02 <- anti_join(fsummary_2017, fsummary_2002, by = c("F_HydroID" = "F_HydroID"))
+dat_diff_17_16 <- anti_join(fsummary_2017, fsummary_2016, by = c("F_HydroID" = "F_HydroID"))
+
+write.csv(dat_diff_16_17, "facilties missing in 2017 from 2016.csv" )
