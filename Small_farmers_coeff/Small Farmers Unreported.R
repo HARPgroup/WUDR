@@ -23,7 +23,7 @@ rm(absent, Year)
 
 
 
-Year = 2002
+Year = 2007
 QS_data(Year) 
 fn_Area_TH(10, Year)
 
@@ -114,7 +114,51 @@ colnames(Compar)[c(3,4)] <- c("Irrigtaion Withdrawals" , "Total Withdrawals")
 # Fn_of_MISSING_withdrawals$C_tot = round (Fn_of_MISSING_withdrawals$Method1_Unreported / Fn_of_MISSING_withdrawals$Facility_withdrawal_mg ,2)
 
 
+########################Plot for Counties with DEQ data
 
+plotdat<-sp::merge(VA_counties,Fn_of_Irri_withdrawals, by.x = "COUNTYFP", by.y = "County_Code")
+
+# Check if merge was correct
+sum(df.summary$Irr.Area.above.TH, na.rm = TRUE)
+sum(plotdat@data$Irr.Area.above.TH, na.rm=TRUE)
+
+p1<-tm_shape(plotdat)+
+  tm_polygons("C_irr", title = "Unreported Coefficient",
+              breaks = c(0,0.05,0.1,0.2,0.5,0.75,Inf),
+              # n=5,style="jenks",
+              id="NAMELSAD")+
+  tm_layout(main.title = paste0(Year," Small farmers unreported coefficient"),
+            legend.outside = FALSE,
+            legend.title.size = 1.2,
+            legend.text.size = 0.8,
+            legend.position = c("left","top"),
+            legend.bg.alpha = 1)
+p1
+
+tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/Irr.Area.Under.TH.png"),  width = 8, height = 5, units = 'in')
+
+####################################
+
+plotdat<-sp::merge(VA_counties,Fn_of_TOTAL_withdrawals, by.x = "COUNTYFP", by.y = "County_Code")
+
+# Check if merge was correct
+sum(Fn_of_TOTAL_withdrawals$Irr.Area.above.TH, na.rm = TRUE)
+sum(plotdat@data$Irr.Area.above.TH, na.rm=TRUE)
+
+p1<-tm_shape(plotdat)+
+  tm_polygons("C_tot", title = "Unreported Coefficient",
+              breaks = c(0,0.05,0.1,0.2,0.5,0.75,Inf),
+              # n=5,style="jenks",
+              id="NAMELSAD")+
+  tm_layout(main.title = paste0(Year," Small farmers unreported coefficient"),
+            legend.outside = FALSE,
+            legend.title.size = 1.2,
+            legend.text.size = 0.8,
+            legend.position = c("left","top"),
+            legend.bg.alpha = 1)
+p1
+
+tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/Irr.Area.Under.TH.png"),  width = 8, height = 5, units = 'in')
 
 
 
