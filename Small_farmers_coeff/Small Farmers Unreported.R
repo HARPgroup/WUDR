@@ -19,7 +19,7 @@ rm(absent, Year)
 
 # QS_data function uses binned data and county summary to fill the D values. The intermediate steps are detailed in the function.
 
-# fn_Area_TH calculates teh area under threshold.
+# fn_Area_TH calculates the area under threshold.
 
 
 
@@ -29,29 +29,92 @@ fn_Area_TH(10, Year)
 
 rm(bin.char, binned_irrigated_area, binned_operations,nass_binned,nass.ag.data, nass.ops.data, opeartions_list) # Not required for further calculations.
 
+
+Non.Reported_Coefficient1 <- Non.Reported
+
+Non.Reported_Coefficient1 <- left_join(Non.Reported_Coefficient1, county.codes, by = c("County" = "County_Name"))
+
 ##################################################################################################################################
 # Load DEQ data   
 
 load(paste0(WUDR_github, "/dat_load/DEQ_data_total_nd_irr.Rdata"))
 
 # Total_deq_counties are the sum of  NON-POWER withdrawals for each census year at county level
-# Irri_deq_counties are the sum of  Irrigtaion withdrawals for each census year at county level
+# Irri_deq_counties are the sum of  Irrigation withdrawals for each census year at county level
 
 
-
-Non.Reported_Coefficient1 <- Non.Reported
-
-Non.Reported_Coefficient1 <- merge.data.frame(Non.Reported_Coefficient1, county.codes, by.x = "County" , by.y = "County_Name")
-
-DEQ_withdarwals <- Irri_deq_county %>% 
-  filter(Year == Year) %>% 
+IRR_DEQ_withdarwals <- Irri_deq_county %>% 
+  filter(YEAR == Year) %>% 
   filter(Facility_withdrawal_mg >0)
 
-Non.Reported_Coefficient1 <- left_join(DEQ_withdarwals[, c(2,4)], Non.Reported_Coefficient1, by = c("COUNTYFP"= "County_Code"))
+Total_DEQ_withdarwals <- Total_deq_county %>% 
+  filter(YEAR == Year) %>% 
+  filter(Facility_withdrawal_mg >0)
 
-Non.Reported_Coefficient1$Method1_Unreported <- ((Non.Reported_Coefficient1$Facility_withdrawal_mg*100)/
-                                                   (100-Non.Reported_Coefficient1$Pct.under.TH.of.total.Irr.area))-Non.Reported_Coefficient1$Facility_withdrawal_mg
 
-Non.Reported_Coefficient1$Method1_Unreported<- ifelse(Non.Reported_Coefficient1$Pct.under.TH.of.total.Irr.area == 100,Non.Reported_Coefficient1$Facility_withdrawal_mg,
-                                                      Non.Reported_Coefficient1$Method1_Unreported )
+
+##############################################################################
+# Counties with DEQ Reported Irrigation withdrawals 
+# NA in Facility_withdrawal_mg column indicates no Irrigation withdrawals reported.
+# Here we calculate withdrawals as function of Irrigation withdrawals
+
+Fn_of_Irri_withdrawals <- left_join(Non.Reported_Coefficient1,IRR_DEQ_withdarwals[, c("COUNTYFP","Facility_withdrawal_mg")], by = c("County_Code"= "COUNTYFP"))
+
+
+Fn_of_Irri_withdrawals <- Fn_of_Irri_withdrawals %>%
+  drop_na(Facility_withdrawal_mg)
+
+
+Fn_of_Irri_withdrawals$Method1_Unreported <- round(((Fn_of_Irri_withdrawals$Facility_withdrawal_mg*100)/
+                                                   (100-Fn_of_Irri_withdrawals$Pct.under.TH.of.total.Irr.area))-Fn_of_Irri_withdrawals$Facility_withdrawal_mg ,2)
+
+# Fn_of_Irri_withdrawals$C_irr2 <- round((((Fn_of_Irri_withdrawals$Facility_withdrawal_mg*100)/
+#                                                    (100-Fn_of_Irri_withdrawals$Pct.under.TH.of.total.Irr.area))-Fn_of_Irri_withdrawals$Facility_withdrawal_mg)/ Fn_of_Irri_withdrawals$Facility_withdrawal_mg,2)
+
+
+Fn_of_Irri_withdrawals$C_irr = round (Fn_of_Irri_withdrawals$Method1_Unreported / Fn_of_Irri_withdrawals$Facility_withdrawal_mg ,2)
+
+
+
+ 
+
+###############################################################################
+# Withdrawals as function of total withdrawals
+
+Fn_of_TOTAL_withdrawals <- left_join(Non.Reported_Coefficient1,Total_DEQ_withdarwals[, c("COUNTYFP","Facility_withdrawal_mg")], by = c("County_Code"= "COUNTYFP"))
+
+Fn_of_TOTAL_withdrawals <- Fn_of_TOTAL_withdrawals %>%
+  drop_na(Facility_withdrawal_mg)
+
+Fn_of_TOTAL_withdrawals$Method1_Unreported <- round(((Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg*100)/
+                                                   (100-Fn_of_TOTAL_withdrawals$Pct.under.TH.of.total.Irr.area))-Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg ,2)
+
+Fn_of_TOTAL_withdrawals$C_tot = round (Fn_of_TOTAL_withdrawals$Method1_Unreported / Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg ,2)
+
+
+##############################################################################
+# Comparison of Coefficient with both methods for counties with DEQ data
+
+Compar <- left_join( Fn_of_Irri_withdrawals[,c(1,8,11)], Fn_of_TOTAL_withdrawals[,c(8,11)], by = c("County_Code"))
+colnames(Compar)[c(3,4)] <- c("Irrigtaion Withdrawals" , "Total Withdrawals")
+
+
+
+
+#################################################################################
+# Withdrawals as function of total withdrawals
+
+# Fn_of_MISSING_withdrawals <- left_join(Non.Reported_Coefficient1,IRR_DEQ_withdarwals[, c("COUNTYFP","Facility_withdrawal_mg")], by = c("County_Code"= "COUNTYFP"))
+# 
+# Fn_of_MISSING_withdrawals <- Fn_of_MISSING_withdrawals[is.na(Fn_of_MISSING_withdrawals$Facility_withdrawal_mg),]
+# 
+# Fn_of_MISSING_withdrawals$Method1_Unreported <- round(((Fn_of_MISSING_withdrawals$Facility_withdrawal_mg*100)/
+#                                                    (100-Fn_of_MISSING_withdrawals$Pct.under.TH.of.total.Irr.area))-Fn_of_MISSING_withdrawals$Facility_withdrawal_mg ,2)
+# 
+# Fn_of_MISSING_withdrawals$C_tot = round (Fn_of_MISSING_withdrawals$Method1_Unreported / Fn_of_MISSING_withdrawals$Facility_withdrawal_mg ,2)
+
+
+
+
+
 

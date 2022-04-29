@@ -56,6 +56,7 @@ summary_counties <- left_join(summary_counties, VA_counties@data[,c(1,3,10)], by
 
 summary_counties <- summary_counties[,c(6,7,1:5)]
 colnames(summary_counties)[4] <- "GEOID"
+colnames(summary_counties)[3] <- "YEAR"
 return(summary_counties)
 }
 
@@ -63,4 +64,4 @@ Total_deq_county <- DEQ_summary(DEQ_total)
 
 Irri_deq_county <- DEQ_summary(DEQ_irrigation)
 
-save(Total_deq_county,Irri_deq_county, file="DEQ_data_total_nd_irr.Rdata")
+save(Total_deq_county,Irri_deq_county, file=paste0(WUDR_github,"/dat_load/DEQ_data_total_nd_irr.Rdata"))
