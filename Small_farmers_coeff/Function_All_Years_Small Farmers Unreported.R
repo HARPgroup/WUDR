@@ -1,12 +1,13 @@
 WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR"
 setwd(WUDR_github)
 
-library(tidyverse)
+library(tidyverse) 
 library(tmap)
 library(rgdal)
 library(stringr)
 library(Kendall)
 library(plotly)
+library("gridExtra")
 options(scipen = 9999)
 
 
@@ -29,12 +30,12 @@ rm(absent, Year)
 # NA in Facility_withdrawal_mg column indicates no Irrigation withdrawals reported.
 # Here we calculate (C_irr) i.e.  FUNCTION of Irrigation withdrawals
 
-# Year = 2002
+ # Year = 2002
 small_counties_coefficient <- function(Year){
   QS_data(Year) 
   fn_Area_TH(10, Year)
   
-    Non.Reported_Coefficient1 <- Non.Reported
+  Non.Reported_Coefficient1 <- Non.Reported
   
   Non.Reported_Coefficient1 <- left_join(Non.Reported_Coefficient1, county.codes, by = c("County" = "County_Name"))
   
@@ -87,8 +88,8 @@ small_counties_coefficient <- function(Year){
   
   Fn_of_Irri_withdrawals$Vol_Unreported <- round(Fn_of_Irri_withdrawals$Irr.Area.Under.TH*(Fn_of_Irri_withdrawals$Irrigation/25.5)*27154/1000000,2)
   
-  
-  Fn_of_Irri_withdrawals$C_irr = round (Fn_of_Irri_withdrawals$Vol_Unreported / Fn_of_Irri_withdrawals$Facility_withdrawal_mg ,2)
+
+  Fn_of_Irri_withdrawals$C_irr = Fn_of_Irri_withdrawals$Vol_Unreported / Fn_of_Irri_withdrawals$Facility_withdrawal_mg 
   
   Fn_of_Irri_withdrawals$Method1_Unreported <- Fn_of_Irri_withdrawals$C_irr * Fn_of_Irri_withdrawals$Facility_withdrawal_mg
   
@@ -101,11 +102,12 @@ plotdat<-sp::merge(VA_counties,Fn_of_Irri_withdrawals, by.x = "COUNTYFP", by.y =
 
 p1<-tm_shape(plotdat)+
   tm_polygons("C_irr", title = "Unreported Coefficient",
-              breaks = c(0,0.05,0.1,0.2,0.5,0.75,1),
+              breaks = c(0,0.05,0.1,0.2,0.5,0.75,Inf),
               # n=5,style="jenks",
               textNA = "Missing DEQ Irrigation Withdrawals / No Census data",
               id="NAMELSAD")+
-  tm_layout(main.title = paste0(Year," Small farmers unreported coefficient : DEQ Irrigtation withdrawals"),
+   # tm_text("NAME", size = 0.3)+
+  tm_layout(main.title = paste0(Year," Small farm unreported\n(as a percentage of VDEQ Irrigation withdrawal)"),
             legend.outside = FALSE,
             legend.title.size = 1.2,
             legend.text.size = 0.8,
@@ -115,8 +117,8 @@ p1
 
 
 Fn_of_Irri_withdrawals <- Fn_of_Irri_withdrawals[,c(1,8,2,4,9,10:14)]
-  tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/",Year, "DEQ_Avaliable_counties_Coefficient1.png"),  width = 8.5, height = 5, units = 'in')
- write.csv(Fn_of_Irri_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "DEQ_Avaliable_counties_Coefficient1.csv"), row.names = FALSE)
+  # tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/",Year, "DEQ_Avaliable_counties_Coefficient1.png"),  width = 8.5, height = 5, units = 'in')
+ # write.csv(Fn_of_Irri_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "DEQ_Avaliable_counties_Coefficient1.csv"), row.names = FALSE)
 # 
 return(Fn_of_Irri_withdrawals)
 }
@@ -183,7 +185,7 @@ Fn_of_TOTAL_withdrawals <- left_join(Fn_of_TOTAL_withdrawals, Irr_deficit, by = 
 
 Fn_of_TOTAL_withdrawals$Vol_Unreported <- round(Fn_of_TOTAL_withdrawals$Irr.Area.Under.TH*(Fn_of_TOTAL_withdrawals$Irrigation/25.5)*27154/1000000,2)
 
-Fn_of_TOTAL_withdrawals$C_tot = round (Fn_of_TOTAL_withdrawals$Vol_Unreported / Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg ,2)
+Fn_of_TOTAL_withdrawals$C_tot = Fn_of_TOTAL_withdrawals$Vol_Unreported / Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg 
 
 Fn_of_TOTAL_withdrawals$Method1_Unreported <- Fn_of_TOTAL_withdrawals$C_tot * Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg
 
@@ -201,7 +203,7 @@ MISSING_withdrawals <- MISSING_withdrawals[,c(1,8)]
 # Fn_of_TOTAL_withdrawals <- left_join(MISSING_withdrawals, Fn_of_TOTAL_withdrawals, by = c("County_Code"))
 
 
-Fn_of_TOTAL_withdrawals_Irrigtaion_Missing <- Fn_of_TOTAL_withdrawals %>% 
+Fn_of_TOTAL_withdrawals_Irrigation_Missing <- Fn_of_TOTAL_withdrawals %>% 
   filter(County_Code %in% MISSING_withdrawals$County_Code)
 
 plotdat<-sp::merge(VA_counties,Fn_of_TOTAL_withdrawals, by.x = "COUNTYFP", by.y = "County_Code")
@@ -214,9 +216,9 @@ p2<-tm_shape(plotdat)+
   tm_polygons("C_tot", title = "Unreported Coefficient",
               breaks = c(0,0.05,0.1,0.2,0.5,0.75,Inf),
              # n=5,style="jenks",
-             textNA = "Missing Census data / No Irrigtaion deficit",
+             textNA = "Missing Census data / No Irrigation deficit",
               id="NAMELSAD")+
-  tm_layout(main.title = paste0(Year," Small farmers unreported coefficient: Total DEQ Withdrawals"),
+  tm_layout(main.title = paste0(Year," Small farm unreported\n(as a percentage of VDEQ total nonenergy withdrawal)"),
             legend.outside = FALSE,
             legend.title.size = 1.2,
             legend.text.size = 0.8,
@@ -224,10 +226,10 @@ p2<-tm_shape(plotdat)+
             legend.bg.alpha = 1)
 p2
 
- tmap_save(p2, paste0(WUDR_github,"/plots/Coefficient1/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.png"),  width = 8, height = 5, units = 'in')
+ # tmap_save(p2, paste0(WUDR_github,"/plots/Coefficient1/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.png"),  width = 8, height = 5, units = 'in')
 
 Fn_of_TOTAL_withdrawals <- Fn_of_TOTAL_withdrawals[,c(1,8,2,4,9,10:14)]
- write.csv(Fn_of_TOTAL_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.csv"))
+ # write.csv(Fn_of_TOTAL_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.csv"))
 return(Fn_of_TOTAL_withdrawals)
 }
 
@@ -244,46 +246,61 @@ Tdeq_coef_2017 <- small_counties_coefficient3(2017)
 # HA (alternative hypothesis): A trend is present in the data. (This could be a positive or negative trend)
 # p-value is less than 0.05, we will reject the null
 
-# Using Area under TH
-
-# dat<- purrr::reduce(list(Tdeq_coef_2002[,c(1,2,4)],Tdeq_coef_2007[,c(2,4)],Tdeq_coef_2012[,c(2,4)],Tdeq_coef_2017[,c(2,4)]), dplyr::full_join, by = 'County_Code')
-# 
-# dat <- dat[,-c(2)]
-# colnames(dat)[2:5] <- c("c2002", "c2007", "c2012", "c2017")
-# 
-# # get counties with data in all 4 years
-# 
-# dat <- dat[complete.cases(dat),]
-# dat <- dat[order(dat$County),]
-# 
-# 
-# MK_dat <- dat %>% 
-#   pivot_longer(cols = c(2:5))
-# colnames(MK_dat)[2:3] <- c("Year", "Area_Under_Th")
-# 
-# 
-# MK_dat <- split(MK_dat$Area_Under_Th, MK_dat$County)
-# MK <- lapply(MK_dat, MannKendall)
-# MK
-# 
-# 
-# 
-# 
-# for (i in 1:nrow(dat)) {
-#   dat$Tau_MK[i] <- MK[[i]][1] 
-#   dat$p_MK[i] <- MK[[i]][2] 
-# }
-# 
-# dat$p_MK <- round(as.numeric(dat$p_MK) ,3)
-# dat$Tau_MK <- round(as.numeric(dat$Tau_MK) ,3)
-
-# write.csv(dat, paste0(WUDR_github,"/Output_Tables/MK_test_Area_underTH.csv"), row.names = FALSE)
 
 #############################################################################
 # Coefficient 1 Mann Kendall test
-# Merge DEQ coefficient with Total withdrawal coefficient # HYBRID data frame for Coefficient
 
 
+
+
+Mk_function <- function(dat1,dat2,dat3,dat4){
+
+
+dat<- purrr::reduce(list(dat1[,c(1,2,9)],dat2[,c(2,9)],dat3[,c(2,9)],dat4[,c(2,9)]), dplyr::inner_join, by = 'County_Code')
+
+dat <- dat[order(dat$County),]
+dat <- dat[,-c(2)]
+
+colnames(dat)[2:5] <- c("c2002", "c2007", "c2012", "c2017")
+
+MK_dat <- dat %>% 
+  pivot_longer(cols = c(2:5))
+colnames(MK_dat)[2:3] <- c("Year", "Coeff1")
+
+
+MK_dat <- split(MK_dat$Coeff1, MK_dat$County)
+MK <- lapply(MK_dat, MannKendall)
+
+for (i in 1:nrow(dat)) {
+  dat$Tau_MK[i] <- MK[[i]][1] 
+  dat$p_MK[i] <- MK[[i]][2] 
+}
+
+dat$p_MK <- round(as.numeric(dat$p_MK) ,3)
+dat$Tau_MK <- round(as.numeric(dat$Tau_MK) ,3)
+
+dat <- dat[order(dat$Tau_MK,decreasing = TRUE),]
+
+return(dat)
+}
+
+# Counties with DEQ data in all 4 years
+MK_Irr_counties <- Mk_function(DEQ_2002,DEQ_2007,DEQ_2012,DEQ_2017)
+
+# All counties with data in all 4 years
+MK_Tot_counties <- Mk_function(Tdeq_coef_2002,Tdeq_coef_2007,Tdeq_coef_2012,Tdeq_coef_2017)
+
+Common_counties_TAU <- left_join(MK_Irr_counties[,c(1,6)], MK_Tot_counties[,c(1,6)], by = "County" )
+
+colnames(Common_counties_TAU)[2:3] <- c("TAU_Irri" ,"TAU_Total")
+
+# write.csv(MK_Irr_counties, paste0(WUDR_github,"/Output_Tables/MK_test_DEQ_Irr.csv"), row.names = FALSE)
+# write.csv(MK_Tot_counties, paste0(WUDR_github,"/Output_Tables/MK_test_DEQ_Total.csv"), row.names = FALSE)
+# write.csv(Common_counties_TAU, paste0(WUDR_github,"/Output_Tables/MK_test_Common_counties.csv"), row.names = FALSE)
+
+#######################################################
+# Create summary table # Coeff1 = all coefficients , C_irr = Irrigation Coefficient, C_tot for Total withdrawals 
+#  REPLACE THIS IN FOR LOOP
 Fn_merge_coeff <- function(x,y){
 CF <- full_join(x[,c(2,9)],y[,c(1,2,9)], by = "County_Code")
 CF <- CF %>% 
@@ -295,45 +312,6 @@ CF_2002 <- Fn_merge_coeff(DEQ_2002,Tdeq_coef_2002)
 CF_2007 <- Fn_merge_coeff(DEQ_2007,Tdeq_coef_2007)
 CF_2012 <- Fn_merge_coeff(DEQ_2012,Tdeq_coef_2012)
 CF_2017 <- Fn_merge_coeff(DEQ_2017,Tdeq_coef_2017)
-
-dat<- purrr::reduce(list(CF_2002[,c(1,3,5)],CF_2007[,c(1,5)],CF_2012[,c(1,5)],CF_2017[,c(1,5)]), dplyr::full_join, by = 'County_Code')
-
-
-dat<- left_join(dat, county.codes, by = "County_Code")
-dat <- dat[,-c(1,2)]
-dat <- dat[,c(5,1:4)]
-colnames(dat)[2:5] <- c("c2002", "c2007", "c2012", "c2017")
-
-# get counties with data in all 4 years
-
-dat <- dat[complete.cases(dat),]
-dat <- dat[order(dat$County_Name),]
-
-### Maan-Kendall Test
-MK_dat <- dat %>% 
-  pivot_longer(cols = c(2:5))
-colnames(MK_dat)[2:3] <- c("Year", "Coeff1")
-
-
-MK_dat <- split(MK_dat$Coeff1, MK_dat$County_Name)
-MK <- lapply(MK_dat, MannKendall)
-MK
-
-
-for (i in 1:nrow(dat)) {
-  dat$Tau_MK[i] <- MK[[i]][1] 
-  dat$p_MK[i] <- MK[[i]][2] 
-}
-
-dat$p_MK <- round(as.numeric(dat$p_MK) ,3)
-dat$Tau_MK <- round(as.numeric(dat$Tau_MK) ,3)
-
-# write.csv(dat, paste0(WUDR_github,"/Output_Tables/MK_test_Coeff.csv"), row.names = FALSE)
-
-
-#######################################################
-# Create summary table # Coeff1 = all coefficients , C_irr = Irrigtaion Coefficient, C_tot for Total withdrawals 
-#  REPLACE THIS IN FOR LOOP
 
 Coeff_Summary <- list()
 Coeff_list <- list(CF_2002,CF_2007,CF_2012,CF_2017)
@@ -355,7 +333,7 @@ Coeff_Summary <- bind_rows(Coeff_Summary, .id = "Year")
 
 # Check the name carefully
  # write.csv(Coeff_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ MISSING) Total Coefficients.csv"), row.names = FALSE) # use C_tot in loop
- # write.csv(Coeff_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Avaliable) Irrigtaion Coefficients.csv"), row.names = FALSE) # use C_irr in loop
+ # write.csv(Coeff_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Avaliable) Irrigation Coefficients.csv"), row.names = FALSE) # use C_irr in loop
  # write.csv(Coeff_Summary, paste0(WUDR_github,"/Output_Tables/Summary ALL Coefficients (HYBRID) Coefficients.csv"), row.names = FALSE) # use C_irr in loop
 #########################################################################
 
@@ -431,7 +409,7 @@ WTH_Summary <- bind_rows(WTH_Summary, .id = "Year")
 
  # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary ALL (HYBRID) Withdrawals.csv"), row.names = FALSE) #Unreported in the loop
 
- # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Avaliable) Irrigtaion Withdrawals.csv"), row.names = FALSE) #Method1_Unreported.x in the loop
+ # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Avaliable) Irrigation Withdrawals.csv"), row.names = FALSE) #Method1_Unreported.x in the loop
  # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ MISSING) Total Withdrawals.csv"), row.names = FALSE)  #Method1_Unreported.y in the loop
 
 
@@ -462,8 +440,9 @@ if (Year == 2002) {
 
 p1 <- ggplot(i, aes(x=Unrep_DEQ_Irrigation, y=Unrep_Rainfall_deficit))+
   geom_point()+
+  geom_smooth(method=lm)+
   labs(title= Year,
-       x="Unreported DEQ Irrigtaion Withdrawals", y = "Unreported Deficit Irrigtaion") +
+       x="Unreported DEQ Irrigation Withdrawals", y = "Unreported Deficit Irrigation") +
   scale_y_continuous(limits = c(0, 200),  breaks = seq(0, 200, by = 50))+
   scale_x_continuous(limits = c(0, 150),  breaks = seq(0, 150, by = 50))
 
@@ -494,10 +473,174 @@ p4<- Plot_scatter(2017)
 library("gridExtra")
 p <- grid.arrange(p1, p2, p3,p4, ncol = 2, nrow = 2)
 p
-# ggsave(paste0(WUDR_github,"/plots/Coefficient1/scatter.png"), plot = p, width = 9.5, height = 6, units = "in")
+ # ggsave(paste0(WUDR_github,"/plots/Coefficient1/scatter.png"), plot = p, width = 9.5, height = 6, units = "in")
 
 #####################################################################
-# Use Fn_merge_Coeff when: You need to compare the coefficient  C_Tot and C_irr. common counties in both methods
+# Unreported based on DEQ irrigation withdrawals and DEQ Deficit Irrigation 
+Plot_scatter <- function(Year){
+if (Year == 2002) {
+  i = DEQ_2002}else if (Year == 2007){
+    i = DEQ_2007} else if (Year == 2012){
+      i = DEQ_2012} else if (Year == 2017){
+        i =DEQ_2017
+      }
+
+i$Pct_Under_TH <- (100*i$Irr.Area.Under.TH/i$Total.Irri.Area)
+i$Unreported_DEQ_irrigtaion <- round(((i$Facility_withdrawal_mg*100)/
+                                                   (100-i$Pct_Under_TH))-i$Facility_withdrawal_mg ,2)
+
+p1 <- ggplot(i, aes(x=log(Unreported_DEQ_irrigtaion), y=log(Method1_Unreported)))+
+  geom_point()+
+  geom_smooth(method=lm)+
+  labs(title= Year,
+       x="Unreported based on \n DEQ Irrigation Withdrawals", y = "Unreported based \n on Deficit Irrigation") +
+  scale_y_continuous(limits = c(1, 5),  breaks = seq(1, 5, by = 1))+
+  scale_x_continuous(limits = c(0, 5),  breaks = seq(0, 5, by = 1))
+
+p1<- p1 + theme_bw()
+p1 <- p1+theme(axis.text.x=element_text(angle = 0, hjust = 0),
+               legend.position="None", 
+               legend.title=element_blank(),
+               legend.box = "horizontal", 
+               legend.background = element_rect(fill="white",
+                                                size=0.5, linetype="solid", 
+                                                colour ="white"),
+               legend.text=element_text(size=12),
+               axis.text=element_text(size=12, colour="black"),
+               axis.title=element_text(size=14, colour="black"),
+               axis.line = element_line(colour = "black", 
+                                        size = 0.5, linetype = "solid"),
+               axis.ticks = element_line(colour="black"),
+               panel.grid.major=element_line(colour = "light grey"), 
+               panel.grid.minor=element_blank())
+p1
+return(p1)
+}
+
+p1 <- Plot_scatter(2002)
+p2<- Plot_scatter(2007)
+p3<- Plot_scatter(2012)
+p4<- Plot_scatter(2017)
+
+
+p <- grid.arrange(p1, p2, p3,p4, ncol = 2, nrow = 2)
+p
+
+ # ggsave(paste0(WUDR_github,"/plots/Coefficient1/log_scatterupdated.png"), plot = p, width = 12, height = 8, units = "in")
+
+#########################################################################################
+# EXAMPLE TIMESERIES BOITH METHODS ########################################
+####################################################################################
+
+
+
+fn_coeff_dat <- function(dat1,dat2,dat3,dat4){
+dat<- purrr::reduce(list(dat1[,c(1,2,9)],dat2[,c(2,9)],dat3[,c(2,9)],dat4[,c(2,9)]), dplyr::inner_join, by = 'County_Code')
+
+dat <- dat[order(dat$County),]
+dat <- dat[,-c(2)]
+
+colnames(dat)[2:5] <- c("c2002", "c2007", "c2012", "c2017")
+return(dat)
+
+}
+
+Irr_coeff <- fn_coeff_dat(DEQ_2002,DEQ_2007,DEQ_2012,DEQ_2017)
+Irr_coeff$Avg <- rowMeans(Irr_coeff[,c(2:5)])
+Irr_coeff <- left_join(Irr_coeff, county.codes, by = c("County"= "County_Name"))
+
+load(paste0(WUDR_github, "/dat_load/All_Years_DEQ_data_total_nd_irr.Rdata"))
+
+County_code <- 165 # Rock
+County_code <- 33  # Caroline
+County_code <- 131 # Northhampton 
+ 
+Irr_Unreported_county <- Irri_deq_county %>% 
+  filter(COUNTYFP == County_code) %>% 
+  mutate(Unreported_Withdrawal = Facility_withdrawal_mg * Irr_coeff$Avg[Irr_coeff$County_Code==County_code])
+
+#####################################
+
+Total_coeff <- fn_coeff_dat(Tdeq_coef_2002,Tdeq_coef_2007,Tdeq_coef_2012,Tdeq_coef_2017)
+Total_coeff$Avg <- rowMeans(Total_coeff[,c(2:5)])
+Total_coeff <- left_join(Total_coeff, county.codes, by = c("County"= "County_Name"))
+
+Tot_Unreported_county <- Total_deq_county %>% 
+  filter(COUNTYFP == County_code) %>% 
+  mutate(Unreported_Withdrawal = Facility_withdrawal_mg * Total_coeff$Avg[Total_coeff$County_Code==County_code])
+
+County_NAM <- Total_coeff$County[Total_coeff$County_Code==County_code]
+plot_data <- left_join(Tot_Unreported_county[,c(3,8)],Irr_Unreported_county[,c(3,8)], by = "YEAR")
+
+colnames(plot_data)[2:3] <- c("C Total Unreported", "C Irri Unreported")
+
+plot_data <- pivot_longer(plot_data, cols = c("C Total Unreported", "C Irri Unreported"))                         
+
+p1 <- ggplot(plot_data, aes(x=YEAR, y=value, group = name))+
+  geom_line(aes(color=name))+
+  geom_point(aes(color=name))+
+  labs(title= County_NAM,
+       x="Year", y = "Unreported Withdrawals (MG)") +
+  scale_y_continuous(limits = c(0, 40),  breaks = seq(0, 40, by = 10))+
+  scale_x_continuous(limits = c(2002, 2017),  breaks = seq(2002, 2017, by = 2))
+
+p1<- p1 + theme_bw()
+p1 <- p1+theme(axis.text.x=element_text(angle = 0, hjust = 0),
+               legend.position="top", 
+               legend.title=element_blank(),
+               legend.box = "horizontal", 
+               legend.background = element_rect(fill="white",
+                                                size=0.5, linetype="solid", 
+                                                colour ="white"),
+               legend.text=element_text(size=12),
+               axis.text=element_text(size=12, colour="black"),
+               axis.title=element_text(size=14, colour="black"),
+               axis.line = element_line(colour = "black", 
+                                        size = 0.5, linetype = "solid"),
+               axis.ticks = element_line(colour="black"),
+               panel.grid.major=element_line(colour = "light grey"), 
+               panel.grid.minor=element_blank())
+p1
+
+
+ggsave(paste0(WUDR_github,"/plots/Coefficient1/NORTHAMPTON_unreported.png"), plot = p1, width = 9.5, height = 6, units = "in")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Fn_merge_Coeff<- function(x,y){
 #   CF <- left_join(x[, c(1,2,9)], y[,c(2,9)], by = "County_Code")
