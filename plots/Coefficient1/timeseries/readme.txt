@@ -1,4 +1,4 @@
-Plots rae generated from Time series Small Farmers script in Small_farmers_coeff folder.
+Plots are generated from Time series Small Farmers script in Small_farmers_coeff folder.
 
 Avg_ Coeff folder contains the plots for unreported withdrawals obtained by multiplying the average coefficent of census years to DEQ reported irrigtaion withdrawals from 2002-2017
 
