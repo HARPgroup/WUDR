@@ -30,7 +30,7 @@ rm(absent, Year)
 # NA in Facility_withdrawal_mg column indicates no Irrigation withdrawals reported.
 # Here we calculate (C_irr) i.e.  FUNCTION of Irrigation withdrawals
 
- # Year = 2002
+  Year = 2002
 small_counties_coefficient <- function(Year){
   QS_data(Year) 
   fn_Area_TH(10, Year)
@@ -287,8 +287,10 @@ return(dat)
 # Counties with DEQ data in all 4 years
 MK_Irr_counties <- Mk_function(DEQ_2002,DEQ_2007,DEQ_2012,DEQ_2017)
 
+
 # All counties with data in all 4 years
 MK_Tot_counties <- Mk_function(Tdeq_coef_2002,Tdeq_coef_2007,Tdeq_coef_2012,Tdeq_coef_2017)
+
 
 Common_counties_TAU <- left_join(MK_Irr_counties[,c(1,6)], MK_Tot_counties[,c(1,6)], by = "County" )
 
@@ -299,7 +301,8 @@ colnames(Common_counties_TAU)[2:3] <- c("TAU_Irri" ,"TAU_Total")
 # write.csv(Common_counties_TAU, paste0(WUDR_github,"/Output_Tables/MK_test_Common_counties.csv"), row.names = FALSE)
 
 #######################################################
-# Create summary table # Coeff1 = all coefficients , C_irr = Irrigation Coefficient, C_tot for Total withdrawals 
+# Create summary table for final coefficient
+# Coeff1 = all coefficients , C_irr = Irrigation Coefficient, C_tot for Total withdrawals 
 #  REPLACE THIS IN FOR LOOP
 Fn_merge_coeff <- function(x,y){
 CF <- full_join(x[,c(2,9)],y[,c(1,2,9)], by = "County_Code")
@@ -319,10 +322,10 @@ Coeff_list <- list(CF_2002,CF_2007,CF_2012,CF_2017)
 
 for (i in 1:4) {
      Coeff_Summary[[i]] <- Coeff_list[[i]] %>% 
-  summarise(Min = min(Coeff1, na.rm = TRUE),
-            Median = median(Coeff1, na.rm = TRUE),
-            Mean = mean(Coeff1, na.rm = TRUE),
-            Max = max(Coeff1, na.rm = TRUE))
+  summarise(Min = min(C_irr, na.rm = TRUE),
+            Median = median(C_irr, na.rm = TRUE),
+            Mean = mean(C_irr, na.rm = TRUE),
+            Max = max(C_irr, na.rm = TRUE))
 }
 
 
@@ -336,6 +339,45 @@ Coeff_Summary <- bind_rows(Coeff_Summary, .id = "Year")
  # write.csv(Coeff_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Avaliable) Irrigation Coefficients.csv"), row.names = FALSE) # use C_irr in loop
  # write.csv(Coeff_Summary, paste0(WUDR_github,"/Output_Tables/Summary ALL Coefficients (HYBRID) Coefficients.csv"), row.names = FALSE) # use C_irr in loop
 #########################################################################
+
+#################################################################
+# Create summary table for coefficients for each county
+# 
+
+fn_coeff_county_summary <- function(dat1,dat2,dat3,dat4){
+  dat<- purrr::reduce(list(dat1[,c(1,2,9)],dat2[,c(2,9)],dat3[,c(2,9)],dat4[,c(2,9)]), dplyr::inner_join, by = 'County_Code')
+  
+  dat <- dat[order(dat$County),]
+  dat <- dat[,-c(2)]
+  
+  colnames(dat)[2:5] <- c("c2002", "c2007", "c2012", "c2017")
+  
+  MK_dat <- dat %>% 
+    pivot_longer(cols = c(2:5))
+  colnames(MK_dat)[2:3] <- c("Year", "Coeff1")
+  
+  
+  Coeff_Summary_County<- MK_dat%>% 
+    group_by(County) %>% 
+    summarise(Min = min(Coeff1, na.rm = TRUE),
+              Median = median(Coeff1, na.rm = TRUE),
+              Mean = mean(Coeff1, na.rm = TRUE),
+              Max = max(Coeff1, na.rm = TRUE)) %>% 
+    mutate(Recent = MK_dat$Coeff1[MK_dat$Year== "c2017"])
+  return(Coeff_Summary_County)
+}
+
+Coeff_summary_Irr_counties <- fn_coeff_county_summary(DEQ_2002,DEQ_2007,DEQ_2012,DEQ_2017)
+
+
+# All counties with data in all 4 years
+Coeff_summary_All_counties <- fn_coeff_county_summary(Tdeq_coef_2002,Tdeq_coef_2007,Tdeq_coef_2012,Tdeq_coef_2017)
+
+write.csv(Coeff_summary_Irr_counties, paste0(WUDR_github,"/Output_Tables/DEQ_IRR_Summary.csv"), row.names = FALSE) # use C_tot in loop
+write.csv(Coeff_summary_All_counties, paste0(WUDR_github,"/Output_Tables/DEQ_Total_summary.csv"), row.names = FALSE) # use C_irr in loop
+
+
+##########################################################################
 
 hybrid_coeff_plot <- function(Year){
 
@@ -401,7 +443,8 @@ for (i in 1:4) {
   summarise(Min = min(Method1_Unreported.y, na.rm = TRUE),
             Median = median(Method1_Unreported.y, na.rm = TRUE),
             Mean = mean(Method1_Unreported.y, na.rm = TRUE),
-            Max = max(Method1_Unreported.y, na.rm = TRUE))
+            Max = max(Method1_Unreported.y, na.rm = TRUE),
+            Recent = )
 }
 names(WTH_Summary) <- c(seq(2002,2017,5))
 WTH_Summary <- bind_rows(WTH_Summary, .id = "Year")
@@ -409,7 +452,7 @@ WTH_Summary <- bind_rows(WTH_Summary, .id = "Year")
 
  # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary ALL (HYBRID) Withdrawals.csv"), row.names = FALSE) #Unreported in the loop
 
- # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Avaliable) Irrigation Withdrawals.csv"), row.names = FALSE) #Method1_Unreported.x in the loop
+ # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ Ava liable) Irrigation Withdrawals.csv"), row.names = FALSE) #Method1_Unreported.x in the loop
  # write.csv(WTH_Summary, paste0(WUDR_github,"/Output_Tables/Summary of (DEQ MISSING) Total Withdrawals.csv"), row.names = FALSE)  #Method1_Unreported.y in the loop
 
 
@@ -529,7 +572,7 @@ p
  # ggsave(paste0(WUDR_github,"/plots/Coefficient1/log_scatterupdated.png"), plot = p, width = 12, height = 8, units = "in")
 
 #########################################################################################
-# EXAMPLE TIMESERIES BOITH METHODS ########################################
+# EXAMPLE TIMESERIES BOTH METHODS ########################################
 ####################################################################################
 
 
