@@ -212,9 +212,9 @@ plot_list[[i]] <- ggplot(Small_farm_unreported_dat[[i]], aes(x=log(Unreported_DE
   geom_point()+
   geom_smooth(method=lm)+
   labs(title= C_year[i],
-       x="Unreported based on \n DEQ Irrigation Withdrawals", y = "Unreported based \n on Deficit Irrigation") +
-  scale_y_continuous(limits = c(-1, 5),  breaks = seq(-1, 5, by = 1))+
-  scale_x_continuous(limits = c(-5, 5),  breaks = seq(-5, 5, by = 2))
+       x="Unreported based on \n DEQ Irrigation Withdrawals (log)", y = "Unreported based \n on Deficit Irrigation (log)") +
+  scale_y_continuous(limits = c(-5, 6),  breaks = seq(-5, 6, by = 2))+
+  scale_x_continuous(limits = c(-5, 6),  breaks = seq(-5, 6, by = 2))
 
 plot_list[[i]]<- plot_list[[i]] + theme_bw()
 plot_list[[i]] <- plot_list[[i]]+theme(axis.text.x=element_text(angle = 0, hjust = 0),
