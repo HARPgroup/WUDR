@@ -12,7 +12,14 @@ small_f_precip = read.table(
 
 cmp_data <- sqldf(
   "
-    select a.*, b.*
+    select a.County_Name,
+      a.Year,
+      a.Facility_withdrawal_mg,
+      a.Mean_Coeff,
+      a.Unreported_Coeff_Based,
+      b.Unreported_Irrigation_based,
+      b.Irrigation,
+      b.PPT
     from small_f_vwuds as a
     left outer join small_f_precip as b
     on (
@@ -35,3 +42,16 @@ irrlm <- lm(
 )
 summary(irrlm)
 abline(irrlm, col="red")
+
+# identify a couple outliers to ask about
+test_case <- sqldf(
+  "
+  select * from cmp_data
+  where County_Name = 'LOUDOUN'
+  "
+)
+# If Loudoun has reported irrigation ave 23.2 mgy,
+# and estimated irrigation on small acres
+# how does the coefficient come out to > 100?
+mean(test_case$Facility_withdrawal_mg)
+mean(test_case$Unreported_Irrigation_based)
