@@ -153,12 +153,10 @@ ppt_list_yearly<- ppt_list_yearly[,c(1,5,2,3,4,6,7)]
 #######################
 ppt_list_yearly$Year <- as.numeric(ppt_list_yearly$Year)
 
-<<<<<<< HEAD
+
 write.csv(ppt_list_yearly, paste0(WUDR_github,"/Output_Tables/", "Timeseries_UnderTh_Deficit_Irr.csv"), row.names= FALSE)
 
 
-=======
->>>>>>> eae395bf82a4cafe4d0ffbeab48a7a3026e38167
 plot_dat <- split( ppt_list_yearly , f = plot_dat$County_Name)
 
 #  for (i in 1:length(plot_dat)) {
