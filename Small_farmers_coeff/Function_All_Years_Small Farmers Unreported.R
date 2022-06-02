@@ -162,9 +162,9 @@ small_counties_coefficient3 <- function(Year){
   Total_DEQ_withdarwals <- Total_deq_county %>% 
     filter(YEAR == Year) %>% 
     filter(Facility_withdrawal_mg >0)
-Fn_of_TOTAL_withdrawals <- left_join(Non.Reported_Coefficient1,Total_DEQ_withdarwals[, c("COUNTYFP","Facility_withdrawal_mg")], by = c("County_Code"= "COUNTYFP"))
+Unreported_Under_TH <- left_join(Non.Reported_Coefficient1,Total_DEQ_withdarwals[, c("COUNTYFP","Facility_withdrawal_mg")], by = c("County_Code"= "COUNTYFP"))
 
-Fn_of_TOTAL_withdrawals <- Fn_of_TOTAL_withdrawals %>%
+Unreported_Under_TH <- Unreported_Under_TH %>%
   drop_na(Facility_withdrawal_mg)
 
 
@@ -181,15 +181,15 @@ if (Year == 2002) {
 Irr_deficit <- ppt_list_yearly[[i]][,c(2,3)]
 Irr_deficit$Irrigation <- round(762 - Irr_deficit$PPT,0) # considering 30 inches as crop water demand
 
-Fn_of_TOTAL_withdrawals <- left_join(Fn_of_TOTAL_withdrawals, Irr_deficit, by = c("County"= "name"))
+Unreported_Under_TH <- left_join(Unreported_Under_TH, Irr_deficit, by = c("County"= "name"))
 
-Fn_of_TOTAL_withdrawals$Vol_Unreported <- round(Fn_of_TOTAL_withdrawals$Irr.Area.Under.TH*(Fn_of_TOTAL_withdrawals$Irrigation/25.5)*27154/1000000,2)
+Unreported_Under_TH$Vol_Unreported <- round(Unreported_Under_TH$Irr.Area.Under.TH*(Unreported_Under_TH$Irrigation/25.5)*27154/1000000,2)
 
-Fn_of_TOTAL_withdrawals$C_tot = Fn_of_TOTAL_withdrawals$Vol_Unreported / Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg 
+Unreported_Under_TH$C_tot = Unreported_Under_TH$Vol_Unreported / Unreported_Under_TH$Facility_withdrawal_mg 
 
-Fn_of_TOTAL_withdrawals$Method1_Unreported <- Fn_of_TOTAL_withdrawals$C_tot * Fn_of_TOTAL_withdrawals$Facility_withdrawal_mg
+Unreported_Under_TH$Method1_Unreported <- Unreported_Under_TH$C_tot * Unreported_Under_TH$Facility_withdrawal_mg
 
-# Fn_of_TOTAL_withdrawals <- Fn_of_TOTAL_withdrawals %>% 
+# Unreported_Under_TH <- Unreported_Under_TH %>% 
 #   filter(C_tot >= 0)
   
 # Get the DEQ irrigation withdrawals missing counties
@@ -200,16 +200,16 @@ MISSING_withdrawals <- MISSING_withdrawals[is.na(MISSING_withdrawals$Facility_wi
 
 MISSING_withdrawals <- MISSING_withdrawals[,c(1,8)]
 
-# Fn_of_TOTAL_withdrawals <- left_join(MISSING_withdrawals, Fn_of_TOTAL_withdrawals, by = c("County_Code"))
+# Unreported_Under_TH <- left_join(MISSING_withdrawals, Unreported_Under_TH, by = c("County_Code"))
 
 
-Fn_of_TOTAL_withdrawals_Irrigation_Missing <- Fn_of_TOTAL_withdrawals %>% 
+Unreported_Under_TH_Irrigation_Missing <- Unreported_Under_TH %>% 
   filter(County_Code %in% MISSING_withdrawals$County_Code)
 
-plotdat<-sp::merge(VA_counties,Fn_of_TOTAL_withdrawals, by.x = "COUNTYFP", by.y = "County_Code")
+plotdat<-sp::merge(VA_counties,Unreported_Under_TH, by.x = "COUNTYFP", by.y = "County_Code")
 
 # Check if merge was correct
-sum(Fn_of_TOTAL_withdrawals$Irr.Area.above.TH, na.rm = TRUE)
+sum(Unreported_Under_TH$Irr.Area.above.TH, na.rm = TRUE)
 sum(plotdat@data$Irr.Area.above.TH, na.rm=TRUE)
 
 p2<-tm_shape(plotdat)+
@@ -228,9 +228,9 @@ p2
 
  # tmap_save(p2, paste0(WUDR_github,"/plots/Coefficient1/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.png"),  width = 8, height = 5, units = 'in')
 
-Fn_of_TOTAL_withdrawals <- Fn_of_TOTAL_withdrawals[,c(1,8,2,4,9,10:14)]
- # write.csv(Fn_of_TOTAL_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.csv"))
-return(Fn_of_TOTAL_withdrawals)
+Unreported_Under_TH <- Unreported_Under_TH[,c(1,8,2,4,9,10:14)]
+ # write.csv(Unreported_Under_TH, paste0(WUDR_github,"/Output_Tables/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.csv"))
+return(Unreported_Under_TH)
 }
 
 Tdeq_coef_2002 <- small_counties_coefficient3(2002)
