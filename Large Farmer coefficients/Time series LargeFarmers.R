@@ -109,14 +109,14 @@ for (i in 1:length(plot_dat_mean)) {
 
 
 for (i in 1:length(plot_dat_median)) {
-  
+
   p1 <- ggplot(plot_dat_median[[i]], aes(x=YEAR, y=`Unreported_Coeff_Based`, group = 1))+
     geom_line()+
     geom_point()+
     labs(title= paste0("Median Coeff ", plot_dat_median[[i]][1,3]) ,
          x="Year", y = "Large Farms \n Unreported Withdrawals (MG)")+
     scale_x_continuous(limits = c(2002, 2017),  breaks = seq(2002, 2017, by = 2))
-  
+
   p1<- p1 + theme_bw()
   p1 <- p1+theme(axis.text.x=element_text(angle = 0, hjust = 0),
                  legend.position="top",
@@ -134,10 +134,10 @@ for (i in 1:length(plot_dat_median)) {
                  panel.grid.major=element_line(colour = "light grey"),
                  panel.grid.minor=element_blank())
   p1
-  
+
   nam = paste0( plot_dat_median[[i]][1,3],"_Median_Coeff")
    ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Large Farmers/Median_Coeff/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
-  
+
 }
 
 
@@ -167,7 +167,7 @@ TS_LF_Under_TH_fn <- function(parm,SM_dat){
   
   Coef_val<- apply(dat_UTH[,3:6], 1, Un_TH, na.rm=TRUE)
   
-  dat_UTH$Max_Tot_Area <- Coef_val
+  dat_UTH$parm_Tot_Area <- Coef_val
   
   colnames(dat_UTH)[3:6] <- seq(2002,2017,5)
   
@@ -184,7 +184,7 @@ TS_LF_Under_TH_fn <- function(parm,SM_dat){
   
   ppt_list_yearly <- ppt_list_yearly[complete.cases(ppt_list_yearly), ]
   
-  ppt_list_yearly$All_Irrigation_mg = round(ppt_list_yearly$Max_Tot_Area*(ppt_list_yearly$Irrigation/25.5)*27154/1000000,2)
+  ppt_list_yearly$All_Irrigation_mg = round(ppt_list_yearly$parm_Tot_Area*(ppt_list_yearly$Irrigation/25.5)*27154/1000000,2)
   
   ppt_list_yearly<- ppt_list_yearly[,c(1,5,2,3,4,6,7)]
   
@@ -225,9 +225,10 @@ TS_LF_Unreported_Median_Area <- TS_LF_Under_TH_fn(median, SF_Unreported_Median_U
 TS_LF_Unreported_MAX_Area <- TS_LF_Under_TH_fn(max, SF_Unreported_MAX_UnderTh)
 
 
-write.csv(Large_farm_timeseries, paste0(WUDR_github,"/Output_Tables/", "Timeseries_Tot_large_farms.csv"), row.names= FALSE)
 # write.csv(TS_LF_Unreported_Median_Area, paste0(WUDR_github,"/Output_Tables/", "TS_LF_Unreported_Median_Area.csv"), row.names= FALSE)
 # write.csv(TS_LF_Unreported_MAX_Area, paste0(WUDR_github,"/Output_Tables/", "TS_LF_Unreported_MAX_Area.csv"), row.names= FALSE)
+
+save(TS_LF_Coeff_Unreported_mean,TS_LF_Coeff_Unreported_median,TS_LF_Unreported_MAX_Area,TS_LF_Unreported_Median_Area, file=paste0(WUDR_github,"/dat_load/LF_All_times_series.RData"))
 
 
 plot_dat <- split( TS_LF_Unreported_MAX_Area , f = TS_LF_Unreported_MAX_Area$name)
@@ -298,13 +299,13 @@ for (i in 1:length(plot_dat)) {
 
 # COMPARISON PLOT 
 
-Compare_LF__Mean_Coeff_Max_UnderTH <- left_join(TS_LF_Coeff_Unreported_mean[,c(1,2,3,6)],TS_LF_Unreported_MAX_Area[,c(1:2,11)], c("COUNTYFP" = "County_Code", "YEAR"= "Year"))
+Compare_LF__Mean_Coeff_Max_Area <- left_join(TS_LF_Coeff_Unreported_mean[,c(1,2,3,6)],TS_LF_Unreported_MAX_Area[,c(1:2,11)], c("COUNTYFP" = "County_Code", "YEAR"= "Year"))
 
-colnames(Compare_LF__Mean_Coeff_Max_UnderTH)[4] <- c("(b) Mean Coeff")
+colnames(Compare_LF__Mean_Coeff_Max_Area)[4] <- c("(b) Mean Coeff")
 
-colnames(Compare_LF__Mean_Coeff_Max_UnderTH)[5] <- c("(a) Max Area")
+colnames(Compare_LF__Mean_Coeff_Max_Area)[5] <- c("(a) Max Area")
 
-plot_dat <- pivot_longer(Compare_LF__Mean_Coeff_Max_UnderTH, cols = c(4,5), names_to = "Type" ,values_to = "Unreported Wth")
+plot_dat <- pivot_longer(Compare_LF__Mean_Coeff_Max_Area, cols = c(4,5), names_to = "Type" ,values_to = "Unreported Wth")
 
 plot_dat <- split( plot_dat , f = plot_dat$County_Name)
 
@@ -386,41 +387,4 @@ for (i in 1:length(plot_dat)) {
 }
 
 
-state_summary <- Large_farm_timeseries %>% 
-  group_by(Year,name) %>% 
-  summarise(DEQ_irr = sum(IRR_DEQ_withdrawals),
-            Deficit_irrigation = sum(All_Irrigation_mg))
-
-state_summary2 <- m_dat %>% 
-  group_by(YEAR) %>% 
-  summarise(Coeff_based = sum(Unreported_Coeff_Based),
-            Deficit_irrigation = sum(Large_Farm_unreported))
-
-
-
-plot_dat <- pivot_longer(state_summary2, cols = c(2,3), names_to = "Type" ,values_to = "Unreported Wth")
-
-p1 <- ggplot(plot_dat, aes(x=YEAR, y=`Unreported Wth`, group = Type ))+
-  geom_line(aes(color=Type))+
-  scale_y_continuous(limits = c(0, 120000),  breaks = seq(0, 120000, by = 10000))+labs(title= plot_dat[[i]][1,3] ,
-                                                                                       x="Year", y = "Unreported Withdrawals (MG)")+
-  scale_x_continuous(limits = c(2002, 2017),  breaks = seq(2002, 2017, by = 2))
-
-p1<- p1 + theme_bw()
-p1 <- p1+theme(axis.text.x=element_text(angle = 0, hjust = 0),
-               legend.position="top",
-               legend.title=element_blank(),
-               legend.box = "horizontal",
-               legend.background = element_rect(fill="white",
-                                                size=0.5, linetype="solid",
-                                                colour ="white"),
-               legend.text=element_text(size=12),
-               axis.text=element_text(size=12, colour="black"),
-               axis.title=element_text(size=14, colour="black"),
-               axis.line = element_line(colour = "black",
-                                        size = 0.5, linetype = "solid"),
-               axis.ticks = element_line(colour="black"),
-               panel.grid.major=element_line(colour = "light grey"),
-               panel.grid.minor=element_blank())
-p1
 
