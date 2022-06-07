@@ -127,6 +127,10 @@ Unreported_mean_coeff <- SF_Unreported_Mean_Irr_Coeff %>%
 
 plot_dat_mean <- cbind.data.frame(DEQ_Irr,Unreported_max_Area,Unreported_mean_coeff)
 plot_dat_mean <- plot_dat_mean[,c(1,2,4,6)]
+
+plot_dat <- pivot_longer(plot_dat_mean, cols = c(2:4), names_to = "Type" ,values_to = "Unreported Wth")
+
+
 p1 <- ggplot(plot_dat, aes(x=YEAR, y=`Unreported Wth`, group = Type ))+
   geom_line(aes(color=Type))+
   labs(title= "Small Farmer Unreported Withdrawals (Mean Coeff and Max Under TH Acerage)" ,
@@ -217,3 +221,49 @@ TS_LF_Coeff_Unreported_median$Coeff_updated <- TS_LF_Coeff_Unreported_median$par
 TS_LF_Coeff_Unreported_median$Coeff_updated <- TS_LF_Coeff_Unreported_median$Unreported_updated/TS_LF_Coeff_Unreported_median$Facility_withdrawal_mg
 
 sum(TS_LF_Coeff_Unreported_median$Unreported_Coeff_Based)
+
+
+###################################################################
+# Updated state summary chart
+
+Unreported_median_Area <- TS_LF_Unreported_Median_Area %>% 
+  filter(Large_Farm_unreported >0 ) %>% 
+  group_by(Year) %>% 
+  summarise(LF_unreported_median_area = sum(Large_Farm_unreported))
+
+Unreported_median_coeff <- TS_LF_Coeff_Unreported_median %>% 
+  filter(Unreported_updated >0 ) %>% 
+  group_by(YEAR) %>% 
+  summarise(LF_unreported_median_coeff = sum(Unreported_updated))
+
+plot_dat_median <- cbind.data.frame(DEQ_Irr,Unreported_median_Area,Unreported_median_coeff)
+plot_dat_median <- plot_dat_median[,c(1,2,4,6)]
+
+plot_dat <- pivot_longer(plot_dat_median, cols = c(2:4), names_to = "Type" ,values_to = "Unreported Wth")
+
+p1 <- ggplot(plot_dat, aes(x=YEAR, y=`Unreported Wth`, group = Type ))+
+  geom_line(aes(color=Type))+
+  labs(title= "Large Farmer Unreported Withdrawals (Both Median)" ,
+       x="Year", y = " Unreported Withdrawals (MG)")+
+  scale_y_continuous(limits = c(0, 120000),  breaks = seq(0, 120000, by = 10000))+
+  scale_x_continuous(limits = c(2002, 2017),  breaks = seq(2002, 2017, by = 2))
+
+p1<- p1 + theme_bw()
+p1 <- p1+theme(axis.text.x=element_text(angle = 0, hjust = 0),
+               legend.position="top",
+               legend.title=element_blank(),
+               legend.box = "horizontal",
+               legend.background = element_rect(fill="white",
+                                                size=0.5, linetype="solid",
+                                                colour ="white"),
+               legend.text=element_text(size=12),
+               axis.text=element_text(size=12, colour="black"),
+               axis.title=element_text(size=14, colour="black"),
+               axis.line = element_line(colour = "black",
+                                        size = 0.5, linetype = "solid"),
+               axis.ticks = element_line(colour="black"),
+               panel.grid.major=element_line(colour = "light grey"),
+               panel.grid.minor=element_blank())
+p1
+
+ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/","State_Summary_Large Farm Median Coeff limit.png"), plot = p1, width = 9.5, height = 6, units = "in")
