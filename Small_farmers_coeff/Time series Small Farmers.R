@@ -5,7 +5,7 @@
 
 WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR"
 setwd(WUDR_github)
-
+county.codes <- read_csv(paste0(WUDR_github, "/csv_files/county_codes_census.csv")) 
 library(tidyverse) 
 library(tmap)
 library(rgdal)
@@ -100,7 +100,7 @@ plot_dat <- split( SF_Unreported_Mean_Irr_Coeff , f = SF_Unreported_Mean_Irr_Coe
   p1
 
   nam = paste0( plot_dat[[i]][1,3],"_Mean_Coeff")
-#ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Mean_Coeff/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
+ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Mean_Coeff/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
 
   }
 
@@ -137,7 +137,7 @@ plot_dat <- split( SF_Unreported_Median_Irr_Coeff , f = SF_Unreported_Median_Irr
   p1
 
   nam = paste0( plot_dat[[i]][1,3],"_Median_Coeff")
-#ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Median Coeff/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
+ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Median Coeff/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
 
  }
 
@@ -169,7 +169,7 @@ TS_SF_Under_TH_fn <- function(parm){
   
   
   SF_Unreported_parm_UnderTh <- lapply(ppt_list_yearly, function(x)
-    mutate(x, Irrigation = round(762 - PPT,0)))
+    mutate(x, Irrigation = round(508 - PPT,0)))
   
   SF_Unreported_parm_UnderTh <- bind_rows(SF_Unreported_parm_UnderTh, .id = "Year")
   
@@ -190,8 +190,8 @@ TS_SF_Under_TH_fn <- function(parm){
 SF_Unreported_MAX_UnderTh<- TS_SF_Under_TH_fn(max)
 SF_Unreported_Median_UnderTh <- TS_SF_Under_TH_fn(median)
 
-# write.csv(SF_Unreported_MAX_UnderTh, paste0(WUDR_github,"/Output_Tables/", "MAX_Timeseries_UnderTh_Deficit_Irr.csv"), row.names= FALSE)
-# write.csv(SF_Unreported_Median_UnderTh, paste0(WUDR_github,"/Output_Tables/", "MEDIAN_Timeseries_Median_UnderTh_Deficit_Irr.csv"), row.names= FALSE)
+ write.csv(SF_Unreported_MAX_UnderTh, paste0(WUDR_github,"/Output_Tables/", "MAX_Timeseries_UnderTh_Deficit_Irr.csv"), row.names= FALSE)
+ write.csv(SF_Unreported_Median_UnderTh, paste0(WUDR_github,"/Output_Tables/", "MEDIAN_Timeseries_Median_UnderTh_Deficit_Irr.csv"), row.names= FALSE)
 
 
 plot_dat <- split( SF_Unreported_MAX_UnderTh , f = SF_Unreported_MAX_UnderTh$name)
@@ -224,7 +224,7 @@ plot_dat <- split( SF_Unreported_MAX_UnderTh , f = SF_Unreported_MAX_UnderTh$nam
   p1
 
   nam = paste0( plot_dat[[i]][1,3],"_MaxUnderTH")
-  #ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Max_UnderTH/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
+ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Max_UnderTH/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
 }
 
 
@@ -259,8 +259,9 @@ plot_dat <- split( SF_Unreported_Median_UnderTh , f = SF_Unreported_Median_Under
   p1
 
   nam = paste0( plot_dat[[i]][1,3],"_MedianUnderTH")
-  #ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Median UnderTH/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
-}
+ ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Median UnderTH/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
+ }
+
 
 #########################################################################################################
 #########################################################################################################
@@ -354,7 +355,7 @@ for (i in 1:length(plot_dat)) {
   p1
 
   nam = plot_dat[[i]][1,3]
-  #ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Median_Median_Comparison time series/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
+ggsave(paste0(WUDR_github,"/plots/Coefficient1/timeseries/Small Farmers/Median_Median_Comparison time series/", nam,".png"), plot = p1, width = 9.5, height = 6, units = "in")
 
 }
 
