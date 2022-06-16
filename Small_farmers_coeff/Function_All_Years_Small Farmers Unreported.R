@@ -30,7 +30,7 @@ rm(absent, Year)
 # NA in Facility_withdrawal_mg column indicates no Irrigation withdrawals reported.
 # Here we calculate (C_irr) i.e.  FUNCTION of Irrigation withdrawals
 
-  Year = 2002
+  # Year = 2002
 small_counties_coefficient <- function(Year){
   QS_data(Year) 
   fn_Area_TH(10, Year)
@@ -82,7 +82,7 @@ small_counties_coefficient <- function(Year){
   
   
   Irr_deficit <- ppt_list_yearly[[i]][,c(2,3)]
-  Irr_deficit$Irrigation <- round(762 - Irr_deficit$PPT,0) # considering 30 inches as crop water demand
+  Irr_deficit$Irrigation <- round(508 - Irr_deficit$PPT,0) # considering 30 inches as crop water demand
   
   Fn_of_Irri_withdrawals <- left_join(Fn_of_Irri_withdrawals, Irr_deficit, by = c("County"= "name"))
   
@@ -117,8 +117,8 @@ p1
 
 
 Fn_of_Irri_withdrawals <- Fn_of_Irri_withdrawals[,c(1,8,2,4,9,10:14)]
-  # tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/",Year, "DEQ_Avaliable_counties_Coefficient1.png"),  width = 8.5, height = 5, units = 'in')
- # write.csv(Fn_of_Irri_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "DEQ_Avaliable_counties_Coefficient1.csv"), row.names = FALSE)
+ tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/",Year, "DEQ_Avaliable_counties_Coefficient1.png"),  width = 8.5, height = 5, units = 'in')
+ write.csv(Fn_of_Irri_withdrawals, paste0(WUDR_github,"/Output_Tables/",Year, "DEQ_Avaliable_counties_Coefficient1.csv"), row.names = FALSE)
 # 
 return(Fn_of_Irri_withdrawals)
 }
@@ -131,7 +131,7 @@ DEQ_2017 <- small_counties_coefficient(2017)
 #2 Counties with NO DEQ Irrigation withdrawals
 ###############################################################################
 # C_tot Coefficient as function of total withdrawals
-# Use single crop water demand (30 inches)
+# Use single crop water demand (20 inches)
 
 small_counties_coefficient3 <- function(Year){
   QS_data(Year) 
@@ -179,7 +179,7 @@ if (Year == 2002) {
 
 
 Irr_deficit <- ppt_list_yearly[[i]][,c(2,3)]
-Irr_deficit$Irrigation <- round(762 - Irr_deficit$PPT,0) # considering 30 inches as crop water demand
+Irr_deficit$Irrigation <- round(508 - Irr_deficit$PPT,0) # considering 20 inches as crop water demand
 
 Unreported_Under_TH <- left_join(Unreported_Under_TH, Irr_deficit, by = c("County"= "name"))
 
@@ -226,10 +226,10 @@ p2<-tm_shape(plotdat)+
             legend.bg.alpha = 1)
 p2
 
- # tmap_save(p2, paste0(WUDR_github,"/plots/Coefficient1/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.png"),  width = 8, height = 5, units = 'in')
+  tmap_save(p2, paste0(WUDR_github,"/plots/Coefficient1/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.png"),  width = 8, height = 5, units = 'in')
 
 Unreported_Under_TH <- Unreported_Under_TH[,c(1,8,2,4,9,10:14)]
- # write.csv(Unreported_Under_TH, paste0(WUDR_github,"/Output_Tables/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.csv"))
+  write.csv(Unreported_Under_TH, paste0(WUDR_github,"/Output_Tables/",Year, "Single demand_DEQ_Missing_counties_Coefficient1.csv"))
 return(Unreported_Under_TH)
 }
 
@@ -238,7 +238,7 @@ Tdeq_coef_2007 <- small_counties_coefficient3(2007)
 Tdeq_coef_2012 <- small_counties_coefficient3(2012)
 Tdeq_coef_2017 <- small_counties_coefficient3(2017)
 
-
+save(DEQ_2002,DEQ_2007,DEQ_2012,DEQ_2017,Tdeq_coef_2002,Tdeq_coef_2007,Tdeq_coef_2012,Tdeq_coef_2017,file= paste0(WUDR_github,"/dat_load/IrrCoeff.RData"))
 ###################################################################
 # Perform Maan-Kendal test on Area under TH
 # H0 (null hypothesis): There is no trend present in the data.
@@ -296,9 +296,9 @@ Common_counties_TAU <- left_join(MK_Irr_counties[,c(1,6)], MK_Tot_counties[,c(1,
 
 colnames(Common_counties_TAU)[2:3] <- c("TAU_Irri" ,"TAU_Total")
 
-# write.csv(MK_Irr_counties, paste0(WUDR_github,"/Output_Tables/MK_test_DEQ_Irr.csv"), row.names = FALSE)
-# write.csv(MK_Tot_counties, paste0(WUDR_github,"/Output_Tables/MK_test_DEQ_Total.csv"), row.names = FALSE)
-# write.csv(Common_counties_TAU, paste0(WUDR_github,"/Output_Tables/MK_test_Common_counties.csv"), row.names = FALSE)
+write.csv(MK_Irr_counties, paste0(WUDR_github,"/Output_Tables/MK_test_DEQ_Irr.csv"), row.names = FALSE)
+write.csv(MK_Tot_counties, paste0(WUDR_github,"/Output_Tables/MK_test_DEQ_Total.csv"), row.names = FALSE)
+write.csv(Common_counties_TAU, paste0(WUDR_github,"/Output_Tables/MK_test_Common_counties.csv"), row.names = FALSE)
 
 #######################################################
 # Create summary table for final coefficient

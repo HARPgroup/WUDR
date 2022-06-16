@@ -5,7 +5,6 @@ load(paste0(WUDR_github,"/dat_load/All_times_series.RData"))
 load(paste0(WUDR_github,"/dat_load/LF_All_times_series.RData"))
 load(paste0(WUDR_github, "/dat_load/All_Years_DEQ_data_Total_nd_irr.Rdata")) 
 
-load(paste0(WUDR_github, "/dat_load/All_Years_DEQ_data_Total_nd_irr.Rdata")) 
 Irri_DEQ_withdrawals <- Irri_deq_county %>% 
   filter(YEAR < 2018) %>% 
   filter(Facility_withdrawal_mg >0)
@@ -15,11 +14,13 @@ DEQ_Irri_withdrawals <- Irri_DEQ_withdrawals %>%
   summarise(DEQ_wth = sum(Facility_withdrawal_mg))
 
 Irr_demand_median_Area <- TS_LF_Unreported_Median_Area %>% 
+  filter(All_Irrigation_mg >0) %>% 
   group_by(Year) %>% 
   summarise(Irrigation_Demand_median_area = sum(All_Irrigation_mg))
 
 
 Irr_demand_max_Area <- TS_LF_Unreported_MAX_Area %>% 
+  filter(All_Irrigation_mg >0) %>% 
   group_by(Year) %>% 
   summarise(Irrigation_Demand_max_area = sum(All_Irrigation_mg))
 
