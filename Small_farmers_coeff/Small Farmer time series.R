@@ -17,6 +17,13 @@ county.codes <- read_csv(paste0(WUDR_github, "/csv_files/county_codes_census.csv
 load(paste0(WUDR_github,"/dat_load/SF_Coeff.RData"))
 
 # Use function to create the time series based on coefficients parm = mean or median 
+
+############################################################################################################
+#############################################################################################################
+### AFTER ANALYIS IT WAS FOUND THAT MEDIAN PROVIED MOST ACCURATE RESULTS, HENCE MEAN VALUES ARE NO LONGER CONSIDERED FOR FURTUR ANALYSIS##
+### REFER TO ARCHIVE Time series Small Farmers_Median_Max_Comparisons  CODE FOR DETAILS ######################################
+##############################################################################################################################
+
 TS_SF_Coeff_fn <- function(parm){
   
   dat_main<- purrr::reduce(list(DEQ_2002[,c(1,2,9)],DEQ_2007[,c(2,9)],DEQ_2012[,c(2,9)],DEQ_2017[,c(2,9)]), dplyr::full_join, by = 'County_Code')
@@ -102,7 +109,9 @@ plot_dat <- split( SF_Unreported_Median_Irr_Coeff , f = SF_Unreported_Median_Irr
  }
 
 ##############################################################
-# Time series all counties using Under TH acreage
+# Time series all counties WITH MISSING DEQ IRRIGTAION DATA.
+# Use median Under TH acreage and Effective precip approach  
+
 
 TS_SF_Under_TH_fn <- function(parm){
   
@@ -193,6 +202,8 @@ plot_dat <- split( SF_Unreported_Median_UnderTh , f = SF_Unreported_Median_Under
 #################################################################
 # Plot unreported withdrawals based on both methods in counties with Irrigation data
 # In time series check the unreported volumes 
+
+
 load(paste0(WUDR_github,"/dat_load/SF_times_series_Median.RData")) 
 load(paste0(WUDR_github, "/dat_load/All_Years_DEQ_data_Total_nd_irr.Rdata")) 
 
