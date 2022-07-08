@@ -1,6 +1,8 @@
 # Scatter Plot
 
-
+WUDR_github<-"F:/My Drive/WUDR/WUDR_Github/WUDR"
+setwd(WUDR_github)
+library(tidyverse) 
 Irrigated_amount<- read.csv( paste0(WUDR_github,"/Output_Tables/", "Timeseries_Tot_large_farms.csv"))
 Irrigated_amount$l_Irr_DEQ <- log(Irrigated_amount$IRR_DEQ_withdrawals)
 # plot_dat <- pivot_longer(Irrigated_amount[,c(7,10)], cols = c("IRR_DEQ_withdrawals","All_Irrigation"))
