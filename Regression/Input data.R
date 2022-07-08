@@ -25,7 +25,7 @@ deq_dat <- All_DEQ_dat %>%
   dplyr::filter(between(Year,2002,2017))
 
 
-# DEQ avaliable data for irrigation
+# DEQ available data for irrigation
 
 deq_dat <- deq_dat %>% 
   dplyr::filter(Use.Type =="irrigation")
