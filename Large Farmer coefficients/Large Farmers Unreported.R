@@ -28,7 +28,7 @@ dat$All_Irrigation_mg <-round(dat$Total.Irri.Area *(dat$Irrigation/25.5)*27154/1
 
 dat$Large_Farm_unreported <- dat$All_Irrigation_mg - dat$Facility_withdrawal_mg-dat$SM_F_Unreported
 
-dat$C_irr_lg <- dat$Large_Farm_unreported / dat$Facility_withdrawal_mg
+dat$C_irr_lg <- 100*dat$Large_Farm_unreported / dat$Facility_withdrawal_mg
 
  # dat <- dat[,c(1,3,5,8:11)] #for write.csv else comment out for more details
 return(dat)
@@ -46,6 +46,7 @@ names(Large_DEQ_IRR_Coeff) <- Y_census
 tmap_mode("plot")
 VA_counties<-readOGR(paste0(WUDR_github, "/VA_counties_sp"), layer="VA_counties")
 
+Year = 2012
 fn_plot <- function(Year){
   if (Year == 2002) {
     i = 1}else if (Year == 2007){
@@ -54,12 +55,14 @@ fn_plot <- function(Year){
           i =4
         }
   
-  plot_Dat <- filter(Large_DEQ_IRR_Coeff[[i]], C_irr_lg >0)
+  plot_Dat <- Large_DEQ_IRR_Coeff[[i]]
+  plot_Dat$C_irr_lg <- ifelse(plot_Dat$C_irr_lg <0 ,0, plot_Dat$C_irr_lg)
+  plot_Dat$Large_Farm_unreported <- ifelse(plot_Dat$Large_Farm_unreported <0 ,0, plot_Dat$Large_Farm_unreported)
   
   plot_Dat<-sp::merge(VA_counties,plot_Dat, by.x = "COUNTYFP", by.y = "County_Code")
   
   p1<-tm_shape(plot_Dat)+
-    tm_polygons("C_irr_lg", title = "Unreported Coefficient (C_irr_lg)",
+    tm_polygons("C_irr_lg", title = "Unreported Coefficient (LF)",
                 breaks = c(0,5,10,25,50,90,Inf),
                 # n=5,style="jenks",
                 textNA = "Missing DEQ Irrigation Withdrawal/No Census data/-ve coeff value",
@@ -75,13 +78,13 @@ fn_plot <- function(Year){
   tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/Large_Farm/",Year, "_LF_Coeff_DEQ_Avalaible_counties.png"),  width = 8.5, height = 5, units = 'in')
   
   p2<-tm_shape(plot_Dat)+
-    tm_polygons("Large_Farm_unreported", title = "Volume Unreported",
+    tm_polygons("Large_Farm_unreported", title = "Unreported volume (MG)",
                 breaks = c(0,10,50,100,200,500,Inf),
                 # n=5,style="jenks",
                 textNA = "Missing DEQ Irrigation Withdrawal/No Census data/-ve coeff value",
                 id="NAMELSAD")+
     # tm_text("NAME", size = 0.3)+
-    tm_layout(main.title = paste0(Year," Large farm unreported \n(as a percentage of VDEQ Irrigation withdrawal)"),
+    tm_layout(main.title = paste0(Year," Large farm unreported withdrawals"),
               legend.outside = FALSE,
               legend.title.size = 1.2,
               legend.text.size = 0.8,
@@ -98,7 +101,8 @@ p2<- fn_plot(2007)
 p3<- fn_plot(2012)
 p4<- fn_plot(2017)
 
-
+####################################################################################################
+#2 
 # Counties without DEQ data
 
 DEQ_Tot_area_Dat <- list(Tdeq_coef_2002,Tdeq_coef_2007,Tdeq_coef_2012,Tdeq_coef_2017) # USed to subtract Small Farmer withdrawals based on deficit method
@@ -125,13 +129,13 @@ for (i in 1:length(DEQ_Tot_area_Dat)) {
 }
 
 names(Large_DEQ_Tot_area) <- Y_census  
-save(Large_DEQ_Tot_area, file = paste0(WUDR_github,"/dat_load/Large_Farm_Tot_area.RData"))
-for (i in 1:length(Large_DEQ_Tot_area)) {
-write.csv(Large_DEQ_Tot_area[[i]], paste0(WUDR_github,"/Output_Tables/Large_DEQ_Tot_area_", names(Large_DEQ_Tot_area)[i] ,".csv"), row.names = FALSE)
-}
+# save(Large_DEQ_Tot_area, file = paste0(WUDR_github,"/dat_load/Large_Farm_Tot_area.RData"))
+# for (i in 1:length(Large_DEQ_Tot_area)) {
+# write.csv(Large_DEQ_Tot_area[[i]], paste0(WUDR_github,"/Output_Tables/Large_DEQ_Tot_area_", names(Large_DEQ_Tot_area)[i] ,".csv"), row.names = FALSE)
+# }
 
 
-
+Year = 2012
 fn_plot_Tot_area <- function(Year){
   if (Year == 2002) {
     i = 1}else if (Year == 2007){
@@ -140,13 +144,14 @@ fn_plot_Tot_area <- function(Year){
           i =4
         }
   
-  plot_Dat <- filter(Large_DEQ_Tot_area[[i]], C_Tot_area_lg >0)
-  
+  plot_Dat <- Large_DEQ_Tot_area[[i]]
+  plot_Dat$C_Tot_area_lg <- ifelse(plot_Dat$C_Tot_area_lg <0 ,0, plot_Dat$C_Tot_area_lg)
+  plot_Dat$Large_Farm_unreported <- ifelse(plot_Dat$Large_Farm_unreported <0 ,0, plot_Dat$Large_Farm_unreported)
   
   plot_Dat<-sp::merge(VA_counties,plot_Dat, by.x = "COUNTYFP", by.y = "County_Code")
   
   p1<-tm_shape(plot_Dat)+
-    tm_polygons("C_Tot_area_lg", title = "Unreported Coefficient (C_Tot_area_lg)",
+    tm_polygons("C_Tot_area_lg", title = "Unreported Coefficient",
                 breaks = c(0,0.01,0.1,1,10,Inf),
                 # n=5,style="jenks",
                 textNA = "-ve coefficient value/No Census data",
@@ -159,16 +164,16 @@ fn_plot_Tot_area <- function(Year){
               legend.position = c("left","top"),
               legend.bg.alpha = 1)
   
-  tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/Large_Farm/",Year, "_LF_Coeff_DEQ_Missing_counties.png"),  width = 8.5, height = 5, units = 'in')
+   tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/Large_Farm/",Year, "_LF_Coeff_DEQ_Missing_counties.png"),  width = 8.5, height = 5, units = 'in')
   
   p2<-tm_shape(plot_Dat)+
-    tm_polygons("Large_Farm_unreported", title = "Volume Unreported",
+    tm_polygons("Large_Farm_unreported", title = "Unreported Volume (MG)",
                 breaks = c(0,10,50,100,200,500,Inf),
                 # n=5,style="jenks",
                 textNA = "-ve coefficient value/No Census data",
                 id="NAMELSAD")+
     # tm_text("NAME", size = 0.3)+
-    tm_layout(main.title = paste0(Year," Large farm unreported"),
+    tm_layout(main.title = paste0(Year," Large farm unreported withdrawals"),
               legend.outside = FALSE,
               legend.title.size = 1.2,
               legend.text.size = 0.8,
