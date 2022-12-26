@@ -75,6 +75,13 @@ dat_census <- rbind(dat_2017[,c(2,8,10)],dat_2012[,c(2,8,10)],dat_2007[,c(2,8,10
 
 load(paste0(WUDR_github, "/dat_load/All_Years_DEQ_data_Total_nd_irr.Rdata")) 
 
+load(paste0(WUDR_github,"/dat_load/LF_Coeff_both.RData"))
+DEQ_median <- Irri_deq_county %>% 
+  group_by(COUNTYFP) %>% 
+  summarise(Deq_median = median(Facility_withdrawal_mg))
+
+
+
   dat_UTH<- purrr::reduce(list(Large_DEQ_Tot_area[[1]][,c(1,2,3)],Large_DEQ_Tot_area[[2]][,c(2,3)],
                                Large_DEQ_Tot_area[[3]][,c(2,3)],Large_DEQ_Tot_area[[4]][,c(2,3)]), dplyr::full_join, by = 'County_Code')
   
@@ -93,6 +100,8 @@ load(paste0(WUDR_github, "/dat_load/All_Years_DEQ_data_Total_nd_irr.Rdata"))
   
   colnames(dat_UTH)[3:6] <- seq(2002,2017,5)
 
+###########################################################################################################
+load(paste0(WUDR_github, "/dat_load/Response_Varibales.Rdata"))
 
 var_res_2 <- left_join(Var_res, dat_census, by = c("YEAR" = "Year", "COUNTYFP" = "County_Code" ))
 var_res_2 <- left_join(var_res_2, dat_UTH[,c(1,7)], by = c("COUNTYFP" = "County_Code" ))
@@ -112,7 +121,49 @@ var_res_2 <- subset(var_res_2, Normalised_Unreported != "-Inf")
 M3 <- lm(Normalised_Unreported ~  YEAR, data = var_res_2)
 summary(M3)
 
-save(var_res_2, file = paste0(WUDR_github, "/dat_load/Regression.Rdata"))
+save(Var_res, file = paste0(WUDR_github, "/dat_load/Response_Varibales.Rdata"))
 
 M3 <- lm(Normalised_Unreported ~  Irrigation+YEAR, data = var_res_2)
 summary(M3)
+
+load(paste0(WUDR_github, "/dat_load/Response_Varibales.Rdata"))
+var_res_2 <- left_join(Var_res, DEQ_median, by = c("COUNTYFP" ))
+var_res_2$Normal_DEQ <- var_res_2$DEQ_Irrigation_withdrawals/var_res_2$Deq_median
+
+var_res_2 <- subset(var_res_2, Normal_DEQ != "Inf")
+var_res_2 <- subset(var_res_2, Normal_DEQ != "-Inf")
+M3 <- lm(Normal_DEQ ~  YEAR, data = var_res_2)
+summary(M3)
+
+M3 <- lm(Normal_DEQ ~ Irrigation , data = var_res_2)
+summary(M3)
+
+############################################################################################################
+M3 <- lm(SF_Unreported_Eff_precip_method_all_counties ~ Irrigation , data = var_res_2)
+summary(M3)
+
+M3 <- lm(SF_Unreported_Eff_precip_method_all_counties ~ YEAR , data = var_res_2)
+summary(M3)
+
+M3 <- lm(SF_Unreported_Eff_precip_method_all_counties ~ Irrigation , data = var_res_2)
+summary(M3)
+
+M3 <- lm(SF_Unreported_Coeff_method_Deq_irri_counties ~ YEAR , data = var_res_2)
+summary(M3)
+
+M3 <- lm(SF_Unreported_Coeff_method_Deq_irri_counties ~ Irrigation , data = var_res_2)
+summary(M3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

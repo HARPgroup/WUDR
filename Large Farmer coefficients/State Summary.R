@@ -10,7 +10,7 @@ library(tidyverse)
 
 ###LOAD BOTH TIME SERIES
 
-load(paste0(WUDR_github,"/dat_load/All_times_series.RData"))
+
 load(paste0(WUDR_github,"/dat_load/LF_All_times_series.RData"))
 
 DEQ_Irr<- TS_LF_Coeff_Unreported_median %>% 
@@ -22,9 +22,9 @@ DEQ_Irr<- TS_LF_Coeff_Unreported_median %>%
 # State summary with Median
 
 Unreported_median_Area <- TS_LF_Unreported_Median_Area %>% 
-  filter(Large_Farm_unreported >0 ) %>% 
+  filter(Unreported_Deficit_Irr_based >0 ) %>% 
   group_by(Year) %>% 
-  summarise(LF_unreported_median_area = sum(Large_Farm_unreported))
+  summarise(LF_unreported_median_area = sum(Unreported_Deficit_Irr_based))
 
 Unreported_median_coeff <- TS_LF_Coeff_Unreported_median %>% 
   filter(Unreported_Coeff_Based >0 ) %>% 
@@ -40,7 +40,7 @@ p1 <- ggplot(plot_dat, aes(x=YEAR, y=`Unreported Wth`, group = Type ))+
   geom_line(aes(color=Type))+
   labs(title= "Large Farmer Unreported Withdrawals (Both Median)" ,
        x="Year", y = " Unreported Withdrawals (MG)")+
-  scale_y_continuous(limits = c(0, 120000),  breaks = seq(0, 120000, by = 10000))+
+  scale_y_continuous(limits = c(0, 20000),  breaks = seq(0, 20000, by = 2000))+
   scale_x_continuous(limits = c(2002, 2017),  breaks = seq(2002, 2017, by = 2))
 
 p1<- p1 + theme_bw()

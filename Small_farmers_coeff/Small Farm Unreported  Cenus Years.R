@@ -17,7 +17,7 @@ options(scipen = 9999)
 
 
 VA_counties<-readOGR(paste0(WUDR_github, "/VA_counties_sp"), layer="VA_counties")
-county.codes <- read_csv(paste0(WUDR_github, "/csv_files/county_codes_census.csv")) 
+county.codes <- read.csv(paste0(WUDR_github, "/csv_files/county_codes_census.csv")) 
 county.codes_deq <- VA_counties@data[,c(1,3)]
 
 
@@ -35,9 +35,10 @@ rm(absent, Year)
 # NA in Facility_withdrawal_mg column indicates no Irrigation withdrawals reported.
 # Here we calculate (C_irr) i.e.  FUNCTION of Irrigation withdrawals
 
- # Year = 2002
+  Year = 2012
 small_counties_coefficient <- function(Year){
-  QS_data(Year) 
+
+    QS_data(Year) 
   fn_Area_TH(10, Year)
   
   Non.Reported_Coefficient1 <- Non.Reported
@@ -87,17 +88,17 @@ small_counties_coefficient <- function(Year){
   
   
   Irr_deficit <- ppt_list_yearly[[i]][,c(2,3)]
-  Irr_deficit$Irrigation <- round(508 - Irr_deficit$PPT,0) # considering 30 inches as crop water demand
+  Irr_deficit$Irrigation <- round(508 - Irr_deficit$PPT,0) # considering 20 inches as crop water demand
   
   Fn_of_Irri_withdrawals <- left_join(Fn_of_Irri_withdrawals, Irr_deficit, by = c("County"= "name"))
   
   Fn_of_Irri_withdrawals$Vol_Unreported <- round(Fn_of_Irri_withdrawals$Irr.Area.Under.TH*(Fn_of_Irri_withdrawals$Irrigation/25.5)*27154/1000000,2)
   
   
-  Fn_of_Irri_withdrawals$C_irr = Fn_of_Irri_withdrawals$Vol_Unreported / Fn_of_Irri_withdrawals$Facility_withdrawal_mg 
+  Fn_of_Irri_withdrawals$C_irr = 100*Fn_of_Irri_withdrawals$Vol_Unreported / Fn_of_Irri_withdrawals$Facility_withdrawal_mg 
   
-  Fn_of_Irri_withdrawals$Method1_Unreported <- Fn_of_Irri_withdrawals$C_irr * Fn_of_Irri_withdrawals$Facility_withdrawal_mg
-  
+ Fn_of_Irri_withdrawals$Method1_Unreported <- Fn_of_Irri_withdrawals$C_irr * Fn_of_Irri_withdrawals$Facility_withdrawal_mg
+
   
   plotdat<-sp::merge(VA_counties,Fn_of_Irri_withdrawals, by.x = "COUNTYFP", by.y = "County_Code")
   
@@ -108,7 +109,7 @@ small_counties_coefficient <- function(Year){
   # Plot for Unreported Coefficient
   p1<-tm_shape(plotdat)+
     tm_polygons("C_irr", title = "Unreported Coefficient",
-                breaks = c(0,0.05,0.1,0.2,0.5,0.75,Inf),
+                breaks = c(0,5,10,20,50,75,Inf),
                 # n=5,style="jenks",
                 textNA = "Missing DEQ Irrigation Withdrawals / No Census data",
                 id="NAMELSAD")+
@@ -123,7 +124,7 @@ small_counties_coefficient <- function(Year){
   
   
   Fn_of_Irri_withdrawals <- Fn_of_Irri_withdrawals[,c(1,8,2,4,9,10:14)]
-  # tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/",Year, "_SF_Coeff_DEQ_Avalaible_counties.png"),  width = 8.5, height = 5, units = 'in')
+   tmap_save(p1, paste0(WUDR_github,"/plots/Coefficient1/",Year, "_SF_Coeff_DEQ_Avalaible_counties.png"),  width = 8.5, height = 5, units = 'in')
   
   ##### Plot for unreported Volume
   
@@ -263,7 +264,7 @@ small_counties_coefficient3 <- function(Year){
                 textNA = "Missing DEQ Irrigation Withdrawals / No Census data",
                 id="NAMELSAD")+
     # tm_text("NAME", size = 0.3)+
-    tm_layout(main.title = paste0(Year," Small farm unreported withdrawals in counties WITHOUT DEQ data"),
+    tm_layout(main.title = paste0(Year," Small farm unreported withdrawals in all counties"),
               legend.outside = FALSE,
               legend.title.size = 1.2,
               legend.text.size = 0.8,
@@ -272,7 +273,7 @@ small_counties_coefficient3 <- function(Year){
   p4
   
   
-  # tmap_save(p4, paste0(WUDR_github,"/plots/Coefficient1/",Year, "_SF_Vol_DEQ_Missing_counties.png"),  width = 8.5, height = 5, units = 'in')
+   tmap_save(p4, paste0(WUDR_github,"/plots/Coefficient1/",Year, "_SF_Vol_DEQ_Missing_counties.png"),  width = 8.5, height = 5, units = 'in')
   
   
   Unreported_Under_TH <- Unreported_Under_TH[,c(1,8,2,4,9,10:14)]

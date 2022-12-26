@@ -325,7 +325,7 @@ Yearly_Summary_Coeff <- TS_LF_Coeff_Unreported_median %>%
 
 Yearly_Summary_Area <- TS_LF_Unreported_Median_Area %>% 
   group_by(Year) %>% 
-  summarise(`Unreported Deficit Irrigation` = sum(Unreported_Deficit_Irr_based[which(Unreported_Deficit_Irr_based>0)]))
+  summarise(`Unreported Withdrawals` = sum(Unreported_Deficit_Irr_based[which(Unreported_Deficit_Irr_based>0)]))
 
 # plot_dat <- cbind.data.frame(Yearly_Summary_Coeff,DEQ_Irr,Yearly_Summary_Area)
 # plot_dat <- plot_dat[,-c(3,5)]
