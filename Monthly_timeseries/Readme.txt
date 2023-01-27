@@ -11,15 +11,16 @@ Large_Farm_unreported_Monthly_timeseries.csv documents large farm unreported irr
 "Large Farm Unreported (mg)": Large Farm unreported irrigation withdrawals for each county at monthly timestep from 2002-2017
 
 
+
+
+"Unreported coefficients- Total Withdrawals.csv" documents Small and large farm unreported withdrawal coeffecient as the percentage of Total withdrawals in he counties with no DEQ reported data.
+"Unreported coefficients- DEQ Withdrawals.csv" small and large farm unreported withdrawal coeffecient as the percentage of DEQ reported withdrawals in the counties with DEQ reported data.
+
 "Year": Year of water withdrawal
 "County Code" : County codes for the counties in the study
 "County" : Name of the county
-"LF Unreported coefficient" : Large Farm unreported withdrawals coefficients
-"SF Unreported coefficient" : Small Farm unreported withdrawals coefficients
-
-Small Farm unreported Coefficient.csv documents Small farm unreported withdrwal coeffecient as the percentage of DEQ reported withdrawals.
-Large Farm unreported Coefficient.csv documents Large farm unreported withdrwal coeffecient as the percentage of DEQ reported withdrawals.
-
+"LF_Unreported_Coefficient" : Large Farm unreported withdrawals coefficients
+"SF_Unreported_Coefficient" : Small Farm unreported withdrawals coefficients
 
 The dataset was created by Laljeet Sangha, Julie Shortridge. The data is also avaliabile at Github repository.https://github.com/HARPgroup/WUDR/tree/main/Monthly_timeseries
 
